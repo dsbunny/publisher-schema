@@ -3906,4 +3906,45 @@ export declare namespace RecipeSchema {
         } | undefined;
     }>;
     type Recipe = z.infer<typeof Recipe>;
+    const RecipeLink: z.ZodObject<{
+        "@type": z.ZodLiteral<"RecipeLink">;
+        id: z.ZodString;
+        href: z.ZodString;
+        size: z.ZodNumber;
+        hash: z.ZodObject<{
+            method: z.ZodLiteral<"SHA256">;
+            hex: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            method: "SHA256";
+            hex: string;
+        }, {
+            method: "SHA256";
+            hex: string;
+        }>;
+        md5: z.ZodString;
+        integrity: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        "@type": "RecipeLink";
+        id: string;
+        href: string;
+        size: number;
+        hash: {
+            method: "SHA256";
+            hex: string;
+        };
+        md5: string;
+        integrity: string;
+    }, {
+        "@type": "RecipeLink";
+        id: string;
+        href: string;
+        size: number;
+        hash: {
+            method: "SHA256";
+            hex: string;
+        };
+        md5: string;
+        integrity: string;
+    }>;
+    type RecipeLink = z.infer<typeof RecipeLink>;
 }
