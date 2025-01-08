@@ -264,4 +264,23 @@ export namespace RecipeSchema {
 	})
 		.describe("Recipe");
 	export type Recipe = z.infer<typeof Recipe>;
+
+	// Link to a recipe
+	export const RecipeLink = z.object({
+		"@type": z.literal("RecipeLink")
+			.describe("Type of the recipe link"),
+		id: z.string().uuid()
+			.describe("ID of the recipe"),
+		href: z.string().url().min(20).max(2048)
+			.describe("URL of the recipe"),
+		size: z.number().min(20).max(1073741824) // 1GB
+			.describe("Size of the recipe in bytes"),
+		hash: HashValue,
+		md5: z.string().length(24)  // Base64 encoded 16 bytes.
+			.describe("MD5 hash value"),
+		integrity: z.string()
+			.describe("Subresource Integrity (SRI) value"),
+	})
+		.describe("Recipe link");
+	export type RecipeLink = z.infer<typeof RecipeLink>;
 }
