@@ -16,9 +16,9 @@ export namespace RecipeSchema {
 	export const HTMLImageElement = z.object({
 		"@type": z.literal("HTMLImageElement")
 			.describe("Type of the HTML element"),
-		id: z.string().uuid()
+		id: z.uuid()
 			.describe("ID of the image"),
-		href: z.string().url().min(20).max(2048)
+		href: z.url().min(20).max(2048)
 			.describe("URL of the image"),
 		size: z.number().min(20).max(5368709120)  // 5GB
 			.describe("Size of the image in bytes"),
@@ -36,9 +36,9 @@ export namespace RecipeSchema {
 	export const HTMLVideoElement = z.object({
 		"@type": z.literal("HTMLVideoElement")
 			.describe("Type of the HTML element"),
-		id: z.string().uuid()
+		id: z.uuid()
 			.describe("ID of the video"),
-		href: z.string().url().min(20).max(2048)
+		href: z.url().min(20).max(2048)
 			.describe("URL of the video"),
 		size: z.number().min(20).max(5497558138880) // 5TB
 			.describe("Size of the video in bytes"),
@@ -56,9 +56,9 @@ export namespace RecipeSchema {
 	export const HTMLScriptElement = z.object({
 		"@type": z.literal("HTMLScriptElement")
 			.describe("Type of the HTML element"),
-		id: z.string().uuid()
+		id: z.uuid()
 			.describe("ID of the script"),
-		href: z.string().url().min(20).max(2048)
+		href: z.url().min(20).max(2048)
 			.describe("URL of the script"),
 		size: z.number().min(20).max(1073741824) // 1GB
 			.describe("Size of the script in bytes"),
@@ -74,9 +74,9 @@ export namespace RecipeSchema {
 	export const CustomElement = z.object({
 		"@type": z.literal("CustomElement")
 			.describe("Type of the custom element"),
-		id: z.string().uuid()
+		id: z.uuid()
 			.describe("ID of the custom element"),
-		href: z.string().url().min(20).max(2048)
+		href: z.url().min(20).max(2048)
 			.describe("URL of the custom element"),
 		size: z.number().min(20).max(1073741824) // 1GB
 			.describe("Size of the custom element in bytes"),
@@ -136,8 +136,8 @@ export namespace RecipeSchema {
 			.describe("Time zone"),
 		times: z.number().int().min(1).max(1000).optional()
 			.describe("Number of times the recurrence rule repeats"),
-		until: z.string().datetime().optional()
-			.describe("DateTime until the recurrence rule repeats"),
+		until: z.iso.datetime().optional()
+			.describe("ISO datetime until the recurrence rule repeats"),
 	})
 		.describe("Recurrence rule");
 	export type RecurrenceRule = z.infer<typeof RecurrenceRule>;
@@ -173,12 +173,12 @@ export namespace RecipeSchema {
 	export const Event = z.object({
 		"@type": z.literal("Event")
 			.describe("Type of the event"),
-		id: z.string().uuid()
+		id: z.uuid()
 			.describe("ID of the event"),
 		priority: z.number().int().min(0).max(10)
 			.describe("Priority of the event"),
-		start: z.string().datetime()
-			.describe("DateTime of the start of the event"),
+		start: z.iso.datetime()
+			.describe("ISO datetime of the start of the event"),
 		timeZone: z.string()
 			.describe("Time zone of the event"),
 		duration: z.string()
@@ -199,9 +199,9 @@ export namespace RecipeSchema {
 	export const Transition = z.object({
 		"@type": z.literal("Transition")
 			.describe("Type of the transition"),
-		id: z.string().uuid()
+		id: z.uuid()
 			.describe("ID of the transition"),
-		href: z.string().url().min(20).max(2048)
+		href: z.url().min(20).max(2048)
 			.describe("URL of the transition"),
 		size: z.number().min(20).max(1073741824) // 1GB
 			.describe("Size of the transition in bytes"),
@@ -217,7 +217,7 @@ export namespace RecipeSchema {
 	export type Transition = z.infer<typeof Transition>;
 
 	export const SignalingServer = z.object({
-		url: z.string().url().min(20).max(2048)
+		url: z.url().min(20).max(2048)
 			.describe("URL of the signaling server"),
 	})
 		.describe("Signaling server");
@@ -238,9 +238,9 @@ export namespace RecipeSchema {
 	export const Cluster = z.object({
 		label: z.string()
 			.describe("Label of the cluster"),
-		id: z.string().uuid()
+		id: z.uuid()
 			.describe("ID of the cluster"),
-		peers: z.array(z.string().uuid())
+		peers: z.array(z.uuid())
 			.describe("Array of peer IDs"),
 		iceServers: z.array(IceServer)
 			.describe("Array of ICE servers"),
@@ -257,7 +257,7 @@ export namespace RecipeSchema {
 		transition: Transition,
 		schedule: z.array(Event)
 			.describe("Array of events"),
-		$defs: z.record(Playlist).optional()
+		$defs: z.record(z.string(), Playlist).optional()
 			.describe("Definitions of playlists"),
 		cluster: Cluster.optional()
 			.describe("Cluster configuration"),
@@ -269,9 +269,9 @@ export namespace RecipeSchema {
 	export const RecipeLink = z.object({
 		"@type": z.literal("RecipeLink")
 			.describe("Type of the recipe link"),
-		id: z.string().uuid()
+		id: z.uuid()
 			.describe("ID of the recipe"),
-		href: z.string().url().min(20).max(2048)
+		href: z.url().min(20).max(2048)
 			.describe("URL of the recipe"),
 		size: z.number().min(20).max(1073741824) // 1GB
 			.describe("Size of the recipe in bytes"),

@@ -8,8 +8,8 @@ export const PublisherResponse = z.object({
 		.describe('Unique identifier for this job, can be used to query the status of the job.'),
 	reference_id: z.string().max(255)
 		.describe('User provided reference identifier.'),
-	timestamp: z.string().datetime()
-		.describe('Timestamp of the job.'),
+	timestamp: z.iso.datetime()
+		.describe('ISO datetime of the job.'),
 })
 	.describe('Publisher job output');
 export type PublisherResponse = z.infer<typeof PublisherResponse>;

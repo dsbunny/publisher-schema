@@ -3,7 +3,7 @@ import { z } from 'zod';
 export var RecipeTemplateSchema;
 (function (RecipeTemplateSchema) {
     RecipeTemplateSchema.MediaTemplate = z.object({
-        asset_id: z.string().uuid()
+        asset_id: z.uuid()
             .describe('Asset ID'),
         // WARNING: 86400 seconds is the maximum duration of a media template
         duration_seconds: z.number().min(1).max(86400)
@@ -47,15 +47,15 @@ export var RecipeTemplateSchema;
             .describe('Array of set positions'),
         times: z.number().int().min(1).max(1000).optional()
             .describe('Number of times the recurrence rule repeats'),
-        until: z.string().datetime().optional()
+        until: z.iso.datetime().optional()
             .describe('DateTime until the recurrence rule repeats'),
     })
         .describe('Recurrence rule template');
     RecipeTemplateSchema.EventTemplate = z.object({
         priority: z.number().int().min(0).max(10)
             .describe('Priority of the event template'),
-        start: z.string().datetime()
-            .describe('DateTime of the start of the event template'),
+        start: z.iso.datetime()
+            .describe('ISO datetime of the start of the event template'),
         timeZone: z.string()
             .describe('Time zone of the event template'),
         duration: z.string()
