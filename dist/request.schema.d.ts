@@ -12,8 +12,8 @@ export declare const PublisherRequest: z.ZodObject<{
                 media_templates: z.ZodArray<z.ZodObject<{
                     asset_id: z.ZodUUID;
                     duration_seconds: z.ZodNumber;
-                }, {}>>;
-            }, {}>;
+                }, {}, {}>>;
+            }, {}, {}>;
             recurrenceRules: z.ZodOptional<z.ZodArray<z.ZodObject<{
                 frequency: z.ZodEnum<{
                     secondly: "secondly";
@@ -36,16 +36,16 @@ export declare const PublisherRequest: z.ZodObject<{
                         su: "su";
                     }>;
                     nthOfPeriod: z.ZodOptional<z.ZodNumber>;
-                }, {}>>>;
+                }, {}, {}>>>;
                 byMonthDay: z.ZodOptional<z.ZodArray<z.ZodNumber>>;
                 byMonth: z.ZodOptional<z.ZodArray<z.ZodNumber>>;
                 bySetPosition: z.ZodOptional<z.ZodArray<z.ZodNumber>>;
                 times: z.ZodOptional<z.ZodNumber>;
                 until: z.ZodOptional<z.iso.ZodISODateTime>;
-            }, {}>>>;
-        }, {}>>;
-    }, {}>;
+            }, {}, {}>>>;
+        }, {}, {}>>;
+    }, {}, {}>;
     agent_ids: z.ZodArray<z.ZodUUID>;
     identity: z.ZodString;
-}, {}>;
+}, {}, {}>;
 export type PublisherRequest = z.infer<typeof PublisherRequest>;
