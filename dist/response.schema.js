@@ -1,5 +1,5 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
-import { z } from 'zod';
+import { z } from 'zod/v4';
 export const PublisherResponse = z.object({
     // A number prefixed with "F/".
     job_id: z.string().regex(/^F\/\d+$/)

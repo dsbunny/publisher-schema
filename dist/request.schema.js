@@ -1,5 +1,5 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
-import { z } from 'zod';
+import { z } from 'zod/v4';
 import { RecipeTemplateSchema } from './recipe-template.schema.js';
 export const PublisherRequest = z.object({
     tenant_id: z.uuid()
