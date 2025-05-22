@@ -29,6 +29,8 @@ export namespace RecipeSchema {
 			.describe("Subresource Integrity (SRI) value"),
 		duration: z.number().min(1).max(86400)
 			.describe("Duration of the image in seconds"),
+		params: z.any()
+			.describe("Optional parameters of the image element"),
 	})
 		.describe("HTML image element");
 	export type HTMLImageElement = z.infer<typeof HTMLImageElement>;
@@ -49,6 +51,8 @@ export namespace RecipeSchema {
 			.describe("Subresource Integrity (SRI) value"),
 		duration: z.number().min(1).max(86400)
 			.describe("Duration of the video in seconds"),
+		params: z.any()
+			.describe("Optional parameters of the video element"),
 	})
 		.describe("HTML video element");
 	export type HTMLVideoElement = z.infer<typeof HTMLVideoElement>;

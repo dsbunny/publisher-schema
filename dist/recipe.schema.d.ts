@@ -16,6 +16,7 @@ export declare namespace RecipeSchema {
         md5: z.ZodString;
         integrity: z.ZodString;
         duration: z.ZodNumber;
+        params: z.ZodAny;
     }, {}, {}>;
     type HTMLImageElement = z.infer<typeof HTMLImageElement>;
     const HTMLVideoElement: z.ZodObject<{
@@ -30,6 +31,7 @@ export declare namespace RecipeSchema {
         md5: z.ZodString;
         integrity: z.ZodString;
         duration: z.ZodNumber;
+        params: z.ZodAny;
     }, {}, {}>;
     type HTMLVideoElement = z.infer<typeof HTMLVideoElement>;
     const HTMLScriptElement: z.ZodObject<{
@@ -70,6 +72,7 @@ export declare namespace RecipeSchema {
             md5: z.ZodString;
             integrity: z.ZodString;
             duration: z.ZodNumber;
+            params: z.ZodAny;
         }, {}, {}>, z.ZodObject<{
             "@type": z.ZodLiteral<"HTMLVideoElement">;
             id: z.ZodUUID;
@@ -82,6 +85,7 @@ export declare namespace RecipeSchema {
             md5: z.ZodString;
             integrity: z.ZodString;
             duration: z.ZodNumber;
+            params: z.ZodAny;
         }, {}, {}>, z.ZodObject<{
             "@type": z.ZodLiteral<"HTMLScriptElement">;
             id: z.ZodUUID;
@@ -170,6 +174,7 @@ export declare namespace RecipeSchema {
             md5: z.ZodString;
             integrity: z.ZodString;
             duration: z.ZodNumber;
+            params: z.ZodAny;
         }, {}, {}>, z.ZodObject<{
             "@type": z.ZodLiteral<"HTMLVideoElement">;
             id: z.ZodUUID;
@@ -182,6 +187,7 @@ export declare namespace RecipeSchema {
             md5: z.ZodString;
             integrity: z.ZodString;
             duration: z.ZodNumber;
+            params: z.ZodAny;
         }, {}, {}>, z.ZodObject<{
             "@type": z.ZodLiteral<"CustomElement">;
             id: z.ZodUUID;
@@ -207,6 +213,7 @@ export declare namespace RecipeSchema {
                 md5: z.ZodString;
                 integrity: z.ZodString;
                 duration: z.ZodNumber;
+                params: z.ZodAny;
             }, {}, {}>, z.ZodObject<{
                 "@type": z.ZodLiteral<"HTMLVideoElement">;
                 id: z.ZodUUID;
@@ -219,6 +226,7 @@ export declare namespace RecipeSchema {
                 md5: z.ZodString;
                 integrity: z.ZodString;
                 duration: z.ZodNumber;
+                params: z.ZodAny;
             }, {}, {}>, z.ZodObject<{
                 "@type": z.ZodLiteral<"HTMLScriptElement">;
                 id: z.ZodUUID;
@@ -255,6 +263,7 @@ export declare namespace RecipeSchema {
                 md5: z.ZodString;
                 integrity: z.ZodString;
                 duration: z.ZodNumber;
+                params: z.ZodAny;
             }, {}, {}>, z.ZodObject<{
                 "@type": z.ZodLiteral<"HTMLVideoElement">;
                 id: z.ZodUUID;
@@ -267,6 +276,7 @@ export declare namespace RecipeSchema {
                 md5: z.ZodString;
                 integrity: z.ZodString;
                 duration: z.ZodNumber;
+                params: z.ZodAny;
             }, {}, {}>, z.ZodObject<{
                 "@type": z.ZodLiteral<"CustomElement">;
                 id: z.ZodUUID;
@@ -292,6 +302,7 @@ export declare namespace RecipeSchema {
                     md5: z.ZodString;
                     integrity: z.ZodString;
                     duration: z.ZodNumber;
+                    params: z.ZodAny;
                 }, {}, {}>, z.ZodObject<{
                     "@type": z.ZodLiteral<"HTMLVideoElement">;
                     id: z.ZodUUID;
@@ -304,6 +315,7 @@ export declare namespace RecipeSchema {
                     md5: z.ZodString;
                     integrity: z.ZodString;
                     duration: z.ZodNumber;
+                    params: z.ZodAny;
                 }, {}, {}>, z.ZodObject<{
                     "@type": z.ZodLiteral<"HTMLScriptElement">;
                     id: z.ZodUUID;
@@ -463,6 +475,7 @@ export declare namespace RecipeSchema {
                     md5: z.ZodString;
                     integrity: z.ZodString;
                     duration: z.ZodNumber;
+                    params: z.ZodAny;
                 }, {}, {}>, z.ZodObject<{
                     "@type": z.ZodLiteral<"HTMLVideoElement">;
                     id: z.ZodUUID;
@@ -475,6 +488,7 @@ export declare namespace RecipeSchema {
                     md5: z.ZodString;
                     integrity: z.ZodString;
                     duration: z.ZodNumber;
+                    params: z.ZodAny;
                 }, {}, {}>, z.ZodObject<{
                     "@type": z.ZodLiteral<"CustomElement">;
                     id: z.ZodUUID;
@@ -500,6 +514,7 @@ export declare namespace RecipeSchema {
                         md5: z.ZodString;
                         integrity: z.ZodString;
                         duration: z.ZodNumber;
+                        params: z.ZodAny;
                     }, {}, {}>, z.ZodObject<{
                         "@type": z.ZodLiteral<"HTMLVideoElement">;
                         id: z.ZodUUID;
@@ -512,6 +527,7 @@ export declare namespace RecipeSchema {
                         md5: z.ZodString;
                         integrity: z.ZodString;
                         duration: z.ZodNumber;
+                        params: z.ZodAny;
                     }, {}, {}>, z.ZodObject<{
                         "@type": z.ZodLiteral<"HTMLScriptElement">;
                         id: z.ZodUUID;
@@ -610,6 +626,7 @@ export declare namespace RecipeSchema {
                 md5: z.ZodString;
                 integrity: z.ZodString;
                 duration: z.ZodNumber;
+                params: z.ZodAny;
             }, {}, {}>, z.ZodObject<{
                 "@type": z.ZodLiteral<"HTMLVideoElement">;
                 id: z.ZodUUID;
@@ -622,6 +639,7 @@ export declare namespace RecipeSchema {
                 md5: z.ZodString;
                 integrity: z.ZodString;
                 duration: z.ZodNumber;
+                params: z.ZodAny;
             }, {}, {}>, z.ZodObject<{
                 "@type": z.ZodLiteral<"CustomElement">;
                 id: z.ZodUUID;
@@ -647,6 +665,7 @@ export declare namespace RecipeSchema {
                     md5: z.ZodString;
                     integrity: z.ZodString;
                     duration: z.ZodNumber;
+                    params: z.ZodAny;
                 }, {}, {}>, z.ZodObject<{
                     "@type": z.ZodLiteral<"HTMLVideoElement">;
                     id: z.ZodUUID;
@@ -659,6 +678,7 @@ export declare namespace RecipeSchema {
                     md5: z.ZodString;
                     integrity: z.ZodString;
                     duration: z.ZodNumber;
+                    params: z.ZodAny;
                 }, {}, {}>, z.ZodObject<{
                     "@type": z.ZodLiteral<"HTMLScriptElement">;
                     id: z.ZodUUID;

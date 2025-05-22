@@ -26,6 +26,8 @@ export var RecipeSchema;
             .describe("Subresource Integrity (SRI) value"),
         duration: z.number().min(1).max(86400)
             .describe("Duration of the image in seconds"),
+        params: z.any()
+            .describe("Optional parameters of the image element"),
     })
         .describe("HTML image element");
     RecipeSchema.HTMLVideoElement = z.object({
@@ -44,6 +46,8 @@ export var RecipeSchema;
             .describe("Subresource Integrity (SRI) value"),
         duration: z.number().min(1).max(86400)
             .describe("Duration of the video in seconds"),
+        params: z.any()
+            .describe("Optional parameters of the video element"),
     })
         .describe("HTML video element");
     RecipeSchema.HTMLScriptElement = z.object({
