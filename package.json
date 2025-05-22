@@ -1,6 +1,6 @@
 {
 	"name": "@dsbunny/publisher-schema",
-	"version": "3.0.3",
+	"version": "3.1.4",
 	"description": "Schema for the Publisher",
 	"type": "module",
 	"main": "dist/index.js",

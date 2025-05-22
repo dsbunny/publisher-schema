@@ -11,6 +11,7 @@ export declare const PublisherRequest: z.ZodObject<{
             playlist: z.ZodObject<{
                 media_templates: z.ZodArray<z.ZodObject<{
                     asset_id: z.ZodUUID;
+                    params: z.ZodAny;
                     duration_seconds: z.ZodNumber;
                 }, {}, {}>>;
             }, {}, {}>;

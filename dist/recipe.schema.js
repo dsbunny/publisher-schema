@@ -78,6 +78,8 @@ export var RecipeSchema;
             .describe("Subresource Integrity (SRI) value"),
         duration: z.number().min(1).max(86400)
             .describe("Duration of the custom element in seconds"),
+        params: z.any()
+            .describe("Optional parameters of the custom element"),
         sources: z.array(z.union([RecipeSchema.HTMLImageElement, RecipeSchema.HTMLVideoElement, RecipeSchema.HTMLScriptElement]))
             .describe("Array of sources"),
     })

@@ -57,6 +57,7 @@ export declare namespace RecipeSchema {
         md5: z.ZodString;
         integrity: z.ZodString;
         duration: z.ZodNumber;
+        params: z.ZodAny;
         sources: z.ZodArray<z.ZodUnion<readonly [z.ZodObject<{
             "@type": z.ZodLiteral<"HTMLImageElement">;
             id: z.ZodUUID;
@@ -193,6 +194,7 @@ export declare namespace RecipeSchema {
             md5: z.ZodString;
             integrity: z.ZodString;
             duration: z.ZodNumber;
+            params: z.ZodAny;
             sources: z.ZodArray<z.ZodUnion<readonly [z.ZodObject<{
                 "@type": z.ZodLiteral<"HTMLImageElement">;
                 id: z.ZodUUID;
@@ -277,6 +279,7 @@ export declare namespace RecipeSchema {
                 md5: z.ZodString;
                 integrity: z.ZodString;
                 duration: z.ZodNumber;
+                params: z.ZodAny;
                 sources: z.ZodArray<z.ZodUnion<readonly [z.ZodObject<{
                     "@type": z.ZodLiteral<"HTMLImageElement">;
                     id: z.ZodUUID;
@@ -484,6 +487,7 @@ export declare namespace RecipeSchema {
                     md5: z.ZodString;
                     integrity: z.ZodString;
                     duration: z.ZodNumber;
+                    params: z.ZodAny;
                     sources: z.ZodArray<z.ZodUnion<readonly [z.ZodObject<{
                         "@type": z.ZodLiteral<"HTMLImageElement">;
                         id: z.ZodUUID;
@@ -630,6 +634,7 @@ export declare namespace RecipeSchema {
                 md5: z.ZodString;
                 integrity: z.ZodString;
                 duration: z.ZodNumber;
+                params: z.ZodAny;
                 sources: z.ZodArray<z.ZodUnion<readonly [z.ZodObject<{
                     "@type": z.ZodLiteral<"HTMLImageElement">;
                     id: z.ZodUUID;

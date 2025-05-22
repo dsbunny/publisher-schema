@@ -5,6 +5,8 @@ export var RecipeTemplateSchema;
     RecipeTemplateSchema.MediaTemplate = z.object({
         asset_id: z.uuid()
             .describe('Asset ID'),
+        params: z.any()
+            .describe('Runtime parameters for the asset'),
         // WARNING: 86400 seconds is the maximum duration of a media template
         duration_seconds: z.number().min(1).max(86400)
             .describe('Duration of the asset in seconds'),

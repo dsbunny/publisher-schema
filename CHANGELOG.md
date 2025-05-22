@@ -1,4 +1,7 @@
 # Changelog
+## v3.1.4
+- Add `params` to `CustomElement`.
+
 ## v3.0.3
 - Bump to `zod@next` with `zod/v4` imports.
 
