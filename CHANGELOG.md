@@ -1,6 +1,9 @@
 # Changelog
+## v3.1.5
+- Remove `duration` from `CustomElement.sources` as not applicable.
+
 ## v3.1.4
-- Add `params` to `CustomElement`.
+- Add `params` to `CustomElement`, enabling application configuration.
 
 ## v3.0.3
 - Bump to `zod@next` with `zod/v4` imports.

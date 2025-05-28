@@ -93,8 +93,12 @@ export namespace RecipeSchema {
 			.describe("Duration of the custom element in seconds"),
 		params: z.any()
 			.describe("Optional parameters of the custom element"),
-		sources: z.array(z.union([HTMLImageElement, HTMLVideoElement, HTMLScriptElement]))
-			.describe("Array of sources"),
+		sources: z.array(z.union([
+			HTMLImageElement.omit({ duration: true }),
+			HTMLVideoElement.omit({ duration: true }),
+			HTMLScriptElement,
+		]))
+			.describe("Array of sources, which can be HTMLImageElement, HTMLVideoElement, or HTMLScriptElement"),
 	})
 		.describe("Custom element");
 	export type CustomElement = z.infer<typeof CustomElement>;

@@ -84,8 +84,12 @@ export var RecipeSchema;
             .describe("Duration of the custom element in seconds"),
         params: z.any()
             .describe("Optional parameters of the custom element"),
-        sources: z.array(z.union([RecipeSchema.HTMLImageElement, RecipeSchema.HTMLVideoElement, RecipeSchema.HTMLScriptElement]))
-            .describe("Array of sources"),
+        sources: z.array(z.union([
+            RecipeSchema.HTMLImageElement.omit({ duration: true }),
+            RecipeSchema.HTMLVideoElement.omit({ duration: true }),
+            RecipeSchema.HTMLScriptElement,
+        ]))
+            .describe("Array of sources, which can be HTMLImageElement, HTMLVideoElement, or HTMLScriptElement"),
     })
         .describe("Custom element");
     // Define types for other components
