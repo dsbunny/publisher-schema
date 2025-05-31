@@ -2,14 +2,14 @@ import { z } from 'zod/v4';
 export declare namespace RecipeTemplateSchema {
     const MediaTemplate: z.ZodObject<{
         asset_id: z.ZodUUID;
-        params: z.ZodAny;
+        params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
         duration_seconds: z.ZodNumber;
     }, {}, {}>;
     type MediaTemplate = z.infer<typeof MediaTemplate>;
     const PlaylistTemplate: z.ZodObject<{
         media_templates: z.ZodArray<z.ZodObject<{
             asset_id: z.ZodUUID;
-            params: z.ZodAny;
+            params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
             duration_seconds: z.ZodNumber;
         }, {}, {}>>;
     }, {}, {}>;
@@ -65,7 +65,7 @@ export declare namespace RecipeTemplateSchema {
         playlist: z.ZodObject<{
             media_templates: z.ZodArray<z.ZodObject<{
                 asset_id: z.ZodUUID;
-                params: z.ZodAny;
+                params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
                 duration_seconds: z.ZodNumber;
             }, {}, {}>>;
         }, {}, {}>;
@@ -109,7 +109,7 @@ export declare namespace RecipeTemplateSchema {
             playlist: z.ZodObject<{
                 media_templates: z.ZodArray<z.ZodObject<{
                     asset_id: z.ZodUUID;
-                    params: z.ZodAny;
+                    params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
                     duration_seconds: z.ZodNumber;
                 }, {}, {}>>;
             }, {}, {}>;

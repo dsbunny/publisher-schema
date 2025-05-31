@@ -1,5 +1,6 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 import { z } from 'zod/v4';
+import { BaseParams } from './base-params.js';
 export var RecipeSchema;
 (function (RecipeSchema) {
     RecipeSchema.HashValue = z.object({
@@ -26,7 +27,7 @@ export var RecipeSchema;
             .describe("Subresource Integrity (SRI) value"),
         duration: z.number().min(1).max(86400)
             .describe("Duration of the image in seconds"),
-        params: z.any()
+        params: BaseParams.optional()
             .describe("Optional parameters of the image element"),
     })
         .describe("HTML image element");
@@ -46,7 +47,7 @@ export var RecipeSchema;
             .describe("Subresource Integrity (SRI) value"),
         duration: z.number().min(1).max(86400)
             .describe("Duration of the video in seconds"),
-        params: z.any()
+        params: BaseParams.optional()
             .describe("Optional parameters of the video element"),
     })
         .describe("HTML video element");
@@ -82,13 +83,13 @@ export var RecipeSchema;
             .describe("Subresource Integrity (SRI) value"),
         duration: z.number().min(1).max(86400)
             .describe("Duration of the custom element in seconds"),
-        params: z.any()
+        params: BaseParams.optional()
             .describe("Optional parameters of the custom element"),
         sources: z.array(z.union([
             RecipeSchema.HTMLImageElement.omit({ duration: true }),
             RecipeSchema.HTMLVideoElement.omit({ duration: true }),
             RecipeSchema.HTMLScriptElement,
-        ]))
+        ])).optional()
             .describe("Array of sources, which can be HTMLImageElement, HTMLVideoElement, or HTMLScriptElement"),
     })
         .describe("Custom element");
@@ -201,6 +202,14 @@ export var RecipeSchema;
             .describe("Subresource Integrity (SRI) value"),
         duration: z.number().min(1).max(86400)
             .describe("Duration of the transition in seconds"),
+        params: BaseParams.optional()
+            .describe("Optional parameters of the transition"),
+        sources: z.array(z.union([
+            RecipeSchema.HTMLImageElement.omit({ duration: true }),
+            RecipeSchema.HTMLVideoElement.omit({ duration: true }),
+            RecipeSchema.HTMLScriptElement,
+        ])).optional()
+            .describe("Array of sources, which can be HTMLImageElement, HTMLVideoElement, or HTMLScriptElement"),
     })
         .describe("Transition");
     RecipeSchema.SignalingServer = z.object({

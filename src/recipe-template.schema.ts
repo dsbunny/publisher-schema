@@ -1,13 +1,14 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 
 import { z } from 'zod/v4';
+import { BaseParams } from './base-params.js';
 
 export namespace RecipeTemplateSchema {
 
 	export const MediaTemplate = z.object({
 		asset_id: z.uuid()
 			.describe('Asset ID'),
-		params: z.any()
+		params: BaseParams.optional()
 			.describe('Runtime parameters for the asset'),
 		// WARNING: 86400 seconds is the maximum duration of a media template
 		duration_seconds: z.number().min(1).max(86400)

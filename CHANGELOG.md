@@ -1,4 +1,9 @@
 # Changelog
+## v3.2.6
+- Narrow asset `params` to a new `BaseParams` type.
+- Extend `Transition` with optional `params` and `sources`, enabling complex transitions.
+- Make `CustomElement` field `sources` optional when no dependencies.
+
 ## v3.1.5
 - Remove `duration` from `CustomElement.sources` as not applicable.
 
