@@ -46,7 +46,7 @@ export declare const PublisherRequest: z.ZodObject<{
             }, {}, {}>>>;
         }, {}, {}>>;
     }, {}, {}>;
-    agent_ids: z.ZodArray<z.ZodUUID>;
+    canvas_ids: z.ZodArray<z.ZodUUID>;
     identity: z.ZodString;
 }, {}, {}>;
 export type PublisherRequest = z.infer<typeof PublisherRequest>;

@@ -1,4 +1,7 @@
 # Changelog
+## v4.0.7
+- Rename `agent_ids` to `canvas_ids`.
+
 ## v3.2.6
 - Narrow asset `params` to a new `BaseParams` type.
 - Extend `Transition` with optional `params` and `sources`, enabling complex transitions.
