@@ -1,4 +1,7 @@
 # Changelog
+## v4.1.8
+- Add API schemas.
+
 ## v4.0.7
 - Rename `agent_ids` to `canvas_ids`.
 
