@@ -1,7 +1,7 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 
-import { PublisherRequest } from 'request.schema.js';
-import { PublisherResponse } from 'response.schema.js';
+import { PublisherRequest } from './request.schema.js';
+import { PublisherResponse } from './response.schema.js';
 import { z } from 'zod/v4';
 
 // #region Errors
