@@ -8,6 +8,7 @@ export declare namespace RecipeSchema {
         "@type": z.ZodLiteral<"HTMLImageElement">;
         id: z.ZodUUID;
         href: z.ZodURL;
+        expires: z.ZodOptional<z.iso.ZodISODateTime>;
         size: z.ZodNumber;
         hash: z.ZodObject<{
             method: z.ZodLiteral<"SHA256">;
@@ -23,6 +24,7 @@ export declare namespace RecipeSchema {
         "@type": z.ZodLiteral<"HTMLVideoElement">;
         id: z.ZodUUID;
         href: z.ZodURL;
+        expires: z.ZodOptional<z.iso.ZodISODateTime>;
         size: z.ZodNumber;
         hash: z.ZodObject<{
             method: z.ZodLiteral<"SHA256">;
@@ -38,6 +40,7 @@ export declare namespace RecipeSchema {
         "@type": z.ZodLiteral<"HTMLScriptElement">;
         id: z.ZodUUID;
         href: z.ZodURL;
+        expires: z.ZodOptional<z.iso.ZodISODateTime>;
         size: z.ZodNumber;
         hash: z.ZodObject<{
             method: z.ZodLiteral<"SHA256">;
@@ -51,6 +54,7 @@ export declare namespace RecipeSchema {
         "@type": z.ZodLiteral<"CustomElement">;
         id: z.ZodUUID;
         href: z.ZodURL;
+        expires: z.ZodOptional<z.iso.ZodISODateTime>;
         size: z.ZodNumber;
         hash: z.ZodObject<{
             method: z.ZodLiteral<"SHA256">;
@@ -69,6 +73,7 @@ export declare namespace RecipeSchema {
             "@type": z.ZodLiteral<"HTMLImageElement">;
             id: z.ZodUUID;
             href: z.ZodURL;
+            expires: z.ZodOptional<z.iso.ZodISODateTime>;
             size: z.ZodNumber;
             md5: z.ZodString;
             integrity: z.ZodString;
@@ -81,6 +86,7 @@ export declare namespace RecipeSchema {
             "@type": z.ZodLiteral<"HTMLVideoElement">;
             id: z.ZodUUID;
             href: z.ZodURL;
+            expires: z.ZodOptional<z.iso.ZodISODateTime>;
             size: z.ZodNumber;
             md5: z.ZodString;
             integrity: z.ZodString;
@@ -88,6 +94,7 @@ export declare namespace RecipeSchema {
             "@type": z.ZodLiteral<"HTMLScriptElement">;
             id: z.ZodUUID;
             href: z.ZodURL;
+            expires: z.ZodOptional<z.iso.ZodISODateTime>;
             size: z.ZodNumber;
             hash: z.ZodObject<{
                 method: z.ZodLiteral<"SHA256">;
@@ -164,6 +171,7 @@ export declare namespace RecipeSchema {
             "@type": z.ZodLiteral<"HTMLImageElement">;
             id: z.ZodUUID;
             href: z.ZodURL;
+            expires: z.ZodOptional<z.iso.ZodISODateTime>;
             size: z.ZodNumber;
             hash: z.ZodObject<{
                 method: z.ZodLiteral<"SHA256">;
@@ -177,6 +185,7 @@ export declare namespace RecipeSchema {
             "@type": z.ZodLiteral<"HTMLVideoElement">;
             id: z.ZodUUID;
             href: z.ZodURL;
+            expires: z.ZodOptional<z.iso.ZodISODateTime>;
             size: z.ZodNumber;
             hash: z.ZodObject<{
                 method: z.ZodLiteral<"SHA256">;
@@ -190,6 +199,7 @@ export declare namespace RecipeSchema {
             "@type": z.ZodLiteral<"CustomElement">;
             id: z.ZodUUID;
             href: z.ZodURL;
+            expires: z.ZodOptional<z.iso.ZodISODateTime>;
             size: z.ZodNumber;
             hash: z.ZodObject<{
                 method: z.ZodLiteral<"SHA256">;
@@ -208,6 +218,7 @@ export declare namespace RecipeSchema {
                 "@type": z.ZodLiteral<"HTMLImageElement">;
                 id: z.ZodUUID;
                 href: z.ZodURL;
+                expires: z.ZodOptional<z.iso.ZodISODateTime>;
                 size: z.ZodNumber;
                 md5: z.ZodString;
                 integrity: z.ZodString;
@@ -220,6 +231,7 @@ export declare namespace RecipeSchema {
                 "@type": z.ZodLiteral<"HTMLVideoElement">;
                 id: z.ZodUUID;
                 href: z.ZodURL;
+                expires: z.ZodOptional<z.iso.ZodISODateTime>;
                 size: z.ZodNumber;
                 md5: z.ZodString;
                 integrity: z.ZodString;
@@ -227,6 +239,7 @@ export declare namespace RecipeSchema {
                 "@type": z.ZodLiteral<"HTMLScriptElement">;
                 id: z.ZodUUID;
                 href: z.ZodURL;
+                expires: z.ZodOptional<z.iso.ZodISODateTime>;
                 size: z.ZodNumber;
                 hash: z.ZodObject<{
                     method: z.ZodLiteral<"SHA256">;
@@ -251,6 +264,7 @@ export declare namespace RecipeSchema {
                 "@type": z.ZodLiteral<"HTMLImageElement">;
                 id: z.ZodUUID;
                 href: z.ZodURL;
+                expires: z.ZodOptional<z.iso.ZodISODateTime>;
                 size: z.ZodNumber;
                 hash: z.ZodObject<{
                     method: z.ZodLiteral<"SHA256">;
@@ -264,6 +278,7 @@ export declare namespace RecipeSchema {
                 "@type": z.ZodLiteral<"HTMLVideoElement">;
                 id: z.ZodUUID;
                 href: z.ZodURL;
+                expires: z.ZodOptional<z.iso.ZodISODateTime>;
                 size: z.ZodNumber;
                 hash: z.ZodObject<{
                     method: z.ZodLiteral<"SHA256">;
@@ -277,6 +292,7 @@ export declare namespace RecipeSchema {
                 "@type": z.ZodLiteral<"CustomElement">;
                 id: z.ZodUUID;
                 href: z.ZodURL;
+                expires: z.ZodOptional<z.iso.ZodISODateTime>;
                 size: z.ZodNumber;
                 hash: z.ZodObject<{
                     method: z.ZodLiteral<"SHA256">;
@@ -295,6 +311,7 @@ export declare namespace RecipeSchema {
                     "@type": z.ZodLiteral<"HTMLImageElement">;
                     id: z.ZodUUID;
                     href: z.ZodURL;
+                    expires: z.ZodOptional<z.iso.ZodISODateTime>;
                     size: z.ZodNumber;
                     md5: z.ZodString;
                     integrity: z.ZodString;
@@ -307,6 +324,7 @@ export declare namespace RecipeSchema {
                     "@type": z.ZodLiteral<"HTMLVideoElement">;
                     id: z.ZodUUID;
                     href: z.ZodURL;
+                    expires: z.ZodOptional<z.iso.ZodISODateTime>;
                     size: z.ZodNumber;
                     md5: z.ZodString;
                     integrity: z.ZodString;
@@ -314,6 +332,7 @@ export declare namespace RecipeSchema {
                     "@type": z.ZodLiteral<"HTMLScriptElement">;
                     id: z.ZodUUID;
                     href: z.ZodURL;
+                    expires: z.ZodOptional<z.iso.ZodISODateTime>;
                     size: z.ZodNumber;
                     hash: z.ZodObject<{
                         method: z.ZodLiteral<"SHA256">;
@@ -399,6 +418,7 @@ export declare namespace RecipeSchema {
         "@type": z.ZodLiteral<"Transition">;
         id: z.ZodUUID;
         href: z.ZodURL;
+        expires: z.ZodOptional<z.iso.ZodISODateTime>;
         size: z.ZodNumber;
         hash: z.ZodObject<{
             method: z.ZodLiteral<"SHA256">;
@@ -417,6 +437,7 @@ export declare namespace RecipeSchema {
             "@type": z.ZodLiteral<"HTMLImageElement">;
             id: z.ZodUUID;
             href: z.ZodURL;
+            expires: z.ZodOptional<z.iso.ZodISODateTime>;
             size: z.ZodNumber;
             md5: z.ZodString;
             integrity: z.ZodString;
@@ -429,6 +450,7 @@ export declare namespace RecipeSchema {
             "@type": z.ZodLiteral<"HTMLVideoElement">;
             id: z.ZodUUID;
             href: z.ZodURL;
+            expires: z.ZodOptional<z.iso.ZodISODateTime>;
             size: z.ZodNumber;
             md5: z.ZodString;
             integrity: z.ZodString;
@@ -436,6 +458,7 @@ export declare namespace RecipeSchema {
             "@type": z.ZodLiteral<"HTMLScriptElement">;
             id: z.ZodUUID;
             href: z.ZodURL;
+            expires: z.ZodOptional<z.iso.ZodISODateTime>;
             size: z.ZodNumber;
             hash: z.ZodObject<{
                 method: z.ZodLiteral<"SHA256">;
@@ -476,6 +499,7 @@ export declare namespace RecipeSchema {
             "@type": z.ZodLiteral<"Transition">;
             id: z.ZodUUID;
             href: z.ZodURL;
+            expires: z.ZodOptional<z.iso.ZodISODateTime>;
             size: z.ZodNumber;
             hash: z.ZodObject<{
                 method: z.ZodLiteral<"SHA256">;
@@ -494,6 +518,7 @@ export declare namespace RecipeSchema {
                 "@type": z.ZodLiteral<"HTMLImageElement">;
                 id: z.ZodUUID;
                 href: z.ZodURL;
+                expires: z.ZodOptional<z.iso.ZodISODateTime>;
                 size: z.ZodNumber;
                 md5: z.ZodString;
                 integrity: z.ZodString;
@@ -506,6 +531,7 @@ export declare namespace RecipeSchema {
                 "@type": z.ZodLiteral<"HTMLVideoElement">;
                 id: z.ZodUUID;
                 href: z.ZodURL;
+                expires: z.ZodOptional<z.iso.ZodISODateTime>;
                 size: z.ZodNumber;
                 md5: z.ZodString;
                 integrity: z.ZodString;
@@ -513,6 +539,7 @@ export declare namespace RecipeSchema {
                 "@type": z.ZodLiteral<"HTMLScriptElement">;
                 id: z.ZodUUID;
                 href: z.ZodURL;
+                expires: z.ZodOptional<z.iso.ZodISODateTime>;
                 size: z.ZodNumber;
                 hash: z.ZodObject<{
                     method: z.ZodLiteral<"SHA256">;
@@ -535,6 +562,7 @@ export declare namespace RecipeSchema {
                     "@type": z.ZodLiteral<"HTMLImageElement">;
                     id: z.ZodUUID;
                     href: z.ZodURL;
+                    expires: z.ZodOptional<z.iso.ZodISODateTime>;
                     size: z.ZodNumber;
                     hash: z.ZodObject<{
                         method: z.ZodLiteral<"SHA256">;
@@ -548,6 +576,7 @@ export declare namespace RecipeSchema {
                     "@type": z.ZodLiteral<"HTMLVideoElement">;
                     id: z.ZodUUID;
                     href: z.ZodURL;
+                    expires: z.ZodOptional<z.iso.ZodISODateTime>;
                     size: z.ZodNumber;
                     hash: z.ZodObject<{
                         method: z.ZodLiteral<"SHA256">;
@@ -561,6 +590,7 @@ export declare namespace RecipeSchema {
                     "@type": z.ZodLiteral<"CustomElement">;
                     id: z.ZodUUID;
                     href: z.ZodURL;
+                    expires: z.ZodOptional<z.iso.ZodISODateTime>;
                     size: z.ZodNumber;
                     hash: z.ZodObject<{
                         method: z.ZodLiteral<"SHA256">;
@@ -579,6 +609,7 @@ export declare namespace RecipeSchema {
                         "@type": z.ZodLiteral<"HTMLImageElement">;
                         id: z.ZodUUID;
                         href: z.ZodURL;
+                        expires: z.ZodOptional<z.iso.ZodISODateTime>;
                         size: z.ZodNumber;
                         md5: z.ZodString;
                         integrity: z.ZodString;
@@ -591,6 +622,7 @@ export declare namespace RecipeSchema {
                         "@type": z.ZodLiteral<"HTMLVideoElement">;
                         id: z.ZodUUID;
                         href: z.ZodURL;
+                        expires: z.ZodOptional<z.iso.ZodISODateTime>;
                         size: z.ZodNumber;
                         md5: z.ZodString;
                         integrity: z.ZodString;
@@ -598,6 +630,7 @@ export declare namespace RecipeSchema {
                         "@type": z.ZodLiteral<"HTMLScriptElement">;
                         id: z.ZodUUID;
                         href: z.ZodURL;
+                        expires: z.ZodOptional<z.iso.ZodISODateTime>;
                         size: z.ZodNumber;
                         hash: z.ZodObject<{
                             method: z.ZodLiteral<"SHA256">;
@@ -684,6 +717,7 @@ export declare namespace RecipeSchema {
                 "@type": z.ZodLiteral<"HTMLImageElement">;
                 id: z.ZodUUID;
                 href: z.ZodURL;
+                expires: z.ZodOptional<z.iso.ZodISODateTime>;
                 size: z.ZodNumber;
                 hash: z.ZodObject<{
                     method: z.ZodLiteral<"SHA256">;
@@ -697,6 +731,7 @@ export declare namespace RecipeSchema {
                 "@type": z.ZodLiteral<"HTMLVideoElement">;
                 id: z.ZodUUID;
                 href: z.ZodURL;
+                expires: z.ZodOptional<z.iso.ZodISODateTime>;
                 size: z.ZodNumber;
                 hash: z.ZodObject<{
                     method: z.ZodLiteral<"SHA256">;
@@ -710,6 +745,7 @@ export declare namespace RecipeSchema {
                 "@type": z.ZodLiteral<"CustomElement">;
                 id: z.ZodUUID;
                 href: z.ZodURL;
+                expires: z.ZodOptional<z.iso.ZodISODateTime>;
                 size: z.ZodNumber;
                 hash: z.ZodObject<{
                     method: z.ZodLiteral<"SHA256">;
@@ -728,6 +764,7 @@ export declare namespace RecipeSchema {
                     "@type": z.ZodLiteral<"HTMLImageElement">;
                     id: z.ZodUUID;
                     href: z.ZodURL;
+                    expires: z.ZodOptional<z.iso.ZodISODateTime>;
                     size: z.ZodNumber;
                     md5: z.ZodString;
                     integrity: z.ZodString;
@@ -740,6 +777,7 @@ export declare namespace RecipeSchema {
                     "@type": z.ZodLiteral<"HTMLVideoElement">;
                     id: z.ZodUUID;
                     href: z.ZodURL;
+                    expires: z.ZodOptional<z.iso.ZodISODateTime>;
                     size: z.ZodNumber;
                     md5: z.ZodString;
                     integrity: z.ZodString;
@@ -747,6 +785,7 @@ export declare namespace RecipeSchema {
                     "@type": z.ZodLiteral<"HTMLScriptElement">;
                     id: z.ZodUUID;
                     href: z.ZodURL;
+                    expires: z.ZodOptional<z.iso.ZodISODateTime>;
                     size: z.ZodNumber;
                     hash: z.ZodObject<{
                         method: z.ZodLiteral<"SHA256">;
@@ -777,6 +816,7 @@ export declare namespace RecipeSchema {
         "@type": z.ZodLiteral<"RecipeLink">;
         id: z.ZodUUID;
         href: z.ZodURL;
+        expires: z.ZodOptional<z.iso.ZodISODateTime>;
         size: z.ZodNumber;
         hash: z.ZodObject<{
             method: z.ZodLiteral<"SHA256">;

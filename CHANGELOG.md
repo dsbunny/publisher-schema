@@ -1,4 +1,7 @@
 # Changelog
+## v4.2.9
+- Add `expires` field for invalidating content on a timestamp.
+
 ## v4.1.8
 - Add API schemas.
 

@@ -21,6 +21,8 @@ export namespace RecipeSchema {
 			.describe("ID of the image"),
 		href: z.url().min(20).max(2048)
 			.describe("URL of the image"),
+		expires: z.iso.datetime().optional()
+			.describe("Optional expiration date of the image"),
 		size: z.number().min(20).max(5368709120)  // 5GB
 			.describe("Size of the image in bytes"),
 		hash: HashValue,
@@ -43,6 +45,8 @@ export namespace RecipeSchema {
 			.describe("ID of the video"),
 		href: z.url().min(20).max(2048)
 			.describe("URL of the video"),
+		expires: z.iso.datetime().optional()
+			.describe("Optional expiration date of the video"),
 		size: z.number().min(20).max(5497558138880) // 5TB
 			.describe("Size of the video in bytes"),
 		hash: HashValue,
@@ -65,6 +69,8 @@ export namespace RecipeSchema {
 			.describe("ID of the script"),
 		href: z.url().min(20).max(2048)
 			.describe("URL of the script"),
+		expires: z.iso.datetime().optional()
+			.describe("Optional expiration date of the script"),
 		size: z.number().min(20).max(1073741824) // 1GB
 			.describe("Size of the script in bytes"),
 		hash: HashValue,
@@ -83,6 +89,8 @@ export namespace RecipeSchema {
 			.describe("ID of the custom element"),
 		href: z.url().min(20).max(2048)
 			.describe("URL of the custom element"),
+		expires: z.iso.datetime().optional()
+			.describe("Optional expiration date of the custom element"),
 		size: z.number().min(20).max(1073741824) // 1GB
 			.describe("Size of the custom element in bytes"),
 		hash: HashValue,
@@ -214,6 +222,8 @@ export namespace RecipeSchema {
 			.describe("ID of the transition"),
 		href: z.url().min(20).max(2048)
 			.describe("URL of the transition"),
+		expires: z.iso.datetime().optional()
+			.describe("Optional expiration date of the transition"),
 		size: z.number().min(20).max(1073741824) // 1GB
 			.describe("Size of the transition in bytes"),
 		hash: HashValue,
@@ -292,6 +302,8 @@ export namespace RecipeSchema {
 			.describe("ID of the recipe"),
 		href: z.url().min(20).max(2048)
 			.describe("URL of the recipe"),
+		expires: z.iso.datetime().optional()
+			.describe("Optional expiration date of the recipe"),
 		size: z.number().min(20).max(1073741824) // 1GB
 			.describe("Size of the recipe in bytes"),
 		hash: HashValue,
