@@ -1,6 +1,6 @@
 {
 	"name": "@dsbunny/publisher-schema",
-	"version": "4.2.9",
+	"version": "4.3.10",
 	"description": "Schema for the Publisher",
 	"type": "module",
 	"main": "dist/index.js",
@@ -12,10 +12,11 @@
 		"build": "tsc",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-	"dependencies": {
-		"zod": "3.25.0-beta.20250515T215617"
-	},
 	"devDependencies": {
-		"typescript": "^5.5.3"
+		"typescript": "^5.5.3",
+		"zod": "^4.1.11"
+	},
+	"peerDependencies": {
+		"zod": "^4.0.0"
 	}
 }

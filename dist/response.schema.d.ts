@@ -1,7 +1,7 @@
-import { z } from 'zod/v4';
+import * as z from "zod";
 export declare const PublisherResponse: z.ZodObject<{
     job_id: z.ZodString;
     reference_id: z.ZodString;
-    timestamp: z.iso.ZodISODateTime;
-}, {}, {}>;
+    timestamp: z.ZodISODateTime;
+}, z.core.$strip>;
 export type PublisherResponse = z.infer<typeof PublisherResponse>;

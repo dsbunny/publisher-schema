@@ -1,4 +1,8 @@
 # Changelog
+## v4.3.10
+- Bump to `zod@4.1.11`.
+- Move Zod to `peerDependencies` so users can bring their own Zod.
+
 ## v4.2.9
 - Add `expires` field for invalidating content on a timestamp.
 
