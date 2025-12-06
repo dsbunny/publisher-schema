@@ -495,6 +495,8 @@ export declare namespace RecipeSchema {
     }, z.core.$strip>;
     type Cluster = z.infer<typeof Cluster>;
     const Recipe: z.ZodObject<{
+        name: z.ZodString;
+        tags: z.ZodArray<z.ZodString>;
         transition: z.ZodObject<{
             "@type": z.ZodLiteral<"Transition">;
             id: z.ZodUUID;

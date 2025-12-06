@@ -283,6 +283,10 @@ export namespace RecipeSchema {
 
 	// Compose the final type
 	export const Recipe = z.object({
+		name: z.string().min(1).max(100)
+			.describe('The name of the recipe'),
+		tags: z.array(z.string().max(64))
+			.describe('The tags of the recipe'),
 		transition: Transition,
 		schedule: z.array(Event)
 			.describe("Array of events"),

@@ -45,6 +45,8 @@ export declare const CreatePublisherRequest: z.ZodObject<{
     tenant_id: z.ZodUUID;
     reference_id: z.ZodString;
     recipe_template: z.ZodObject<{
+        name: z.ZodString;
+        tags: z.ZodArray<z.ZodString>;
         events: z.ZodArray<z.ZodObject<{
             priority: z.ZodNumber;
             start: z.ZodISODateTime;

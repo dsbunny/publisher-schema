@@ -1,4 +1,7 @@
 # Changelog
+## v5.0.11
+- Add `name` and `tags` to both `Recipe` and `RecipeTemplate` to allow indexing.
+
 ## v4.3.10
 - Bump to `zod@4.1.11`.
 - Move Zod to `peerDependencies` so users can bring their own Zod.

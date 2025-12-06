@@ -81,6 +81,10 @@ export namespace RecipeTemplateSchema {
 	export type EventTemplate = z.infer<typeof EventTemplate>;
 
 	export const RecipeTemplate = z.object({
+		name: z.string().min(1).max(100)
+			.describe('The name of the recipe template'),
+		tags: z.array(z.string().max(64))
+			.describe('The tags of the recipe template'),
 		events: z.array(EventTemplate).min(1).max(1000)
 			.describe('Array of event templates'),
 	})

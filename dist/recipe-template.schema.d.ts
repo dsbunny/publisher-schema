@@ -101,6 +101,8 @@ export declare namespace RecipeTemplateSchema {
     }, z.core.$strip>;
     type EventTemplate = z.infer<typeof EventTemplate>;
     const RecipeTemplate: z.ZodObject<{
+        name: z.ZodString;
+        tags: z.ZodArray<z.ZodString>;
         events: z.ZodArray<z.ZodObject<{
             priority: z.ZodNumber;
             start: z.ZodISODateTime;
