@@ -1,5 +1,5 @@
 # @dsbunny/publisher-schema
-_ZOD_ based schema for communications with _The Publisher_.
+_ZOD_ based schema for communications with the Publisher.
 
 ## Dependency Installation
 With NodeJS package manager of choice.
