@@ -1,5 +1,5 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
-import * as z from "zod";
+import * as z from "zod/v4";
 import { BaseParams } from './base-params.js';
 export var RecipeSchema;
 (function (RecipeSchema) {
@@ -163,10 +163,12 @@ export var RecipeSchema;
         match: RecipeSchema.MatchPattern,
     })
         .describe("DOM event");
+    RecipeSchema.PlaylistEntry = z.union([RecipeSchema.HTMLImageElement, RecipeSchema.HTMLVideoElement, RecipeSchema.CustomElement])
+        .describe("Playlist entry, which can be HTMLImageElement, HTMLVideoElement, or CustomElement");
     RecipeSchema.Playlist = z.object({
         "@type": z.literal("Playlist")
             .describe("Type of the playlist"),
-        entries: z.array(z.union([RecipeSchema.HTMLImageElement, RecipeSchema.HTMLVideoElement, RecipeSchema.CustomElement]))
+        entries: z.array(RecipeSchema.PlaylistEntry)
             .describe("Array of entries"),
     })
         .describe("Playlist");

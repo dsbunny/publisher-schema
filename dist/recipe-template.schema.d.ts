@@ -1,4 +1,4 @@
-import * as z from "zod";
+import * as z from "zod/v4";
 export declare namespace RecipeTemplateSchema {
     const MediaTemplate: z.ZodObject<{
         asset_id: z.ZodUUID;

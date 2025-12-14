@@ -1,4 +1,4 @@
-import * as z from "zod";
+import * as z from "zod/v4";
 export declare const PublisherResponse: z.ZodObject<{
     job_id: z.ZodString;
     reference_id: z.ZodString;

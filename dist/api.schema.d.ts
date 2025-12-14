@@ -1,4 +1,4 @@
-import * as z from "zod";
+import * as z from "zod/v4";
 export declare const ErrorResponse: z.ZodObject<{
     code: z.ZodString;
     message: z.ZodString;

@@ -1,4 +1,4 @@
-import * as z from "zod";
+import * as z from "zod/v4";
 export declare namespace RecipeSchema {
     const HashValue: z.ZodObject<{
         method: z.ZodLiteral<"SHA256">;
@@ -165,6 +165,89 @@ export declare namespace RecipeSchema {
         }, z.core.$strip>;
     }, z.core.$strip>;
     type DOMEvent = z.infer<typeof DOMEvent>;
+    const PlaylistEntry: z.ZodUnion<readonly [z.ZodObject<{
+        "@type": z.ZodLiteral<"HTMLImageElement">;
+        id: z.ZodUUID;
+        href: z.ZodURL;
+        expires: z.ZodOptional<z.ZodISODateTime>;
+        size: z.ZodNumber;
+        hash: z.ZodObject<{
+            method: z.ZodLiteral<"SHA256">;
+            hex: z.ZodString;
+        }, z.core.$strip>;
+        md5: z.ZodString;
+        integrity: z.ZodString;
+        duration: z.ZodNumber;
+        params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
+    }, z.core.$strip>, z.ZodObject<{
+        "@type": z.ZodLiteral<"HTMLVideoElement">;
+        id: z.ZodUUID;
+        href: z.ZodURL;
+        expires: z.ZodOptional<z.ZodISODateTime>;
+        size: z.ZodNumber;
+        hash: z.ZodObject<{
+            method: z.ZodLiteral<"SHA256">;
+            hex: z.ZodString;
+        }, z.core.$strip>;
+        md5: z.ZodString;
+        integrity: z.ZodString;
+        duration: z.ZodNumber;
+        params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
+    }, z.core.$strip>, z.ZodObject<{
+        "@type": z.ZodLiteral<"CustomElement">;
+        id: z.ZodUUID;
+        href: z.ZodURL;
+        expires: z.ZodOptional<z.ZodISODateTime>;
+        size: z.ZodNumber;
+        hash: z.ZodObject<{
+            method: z.ZodLiteral<"SHA256">;
+            hex: z.ZodString;
+        }, z.core.$strip>;
+        md5: z.ZodString;
+        integrity: z.ZodString;
+        duration: z.ZodNumber;
+        params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
+        sources: z.ZodOptional<z.ZodArray<z.ZodUnion<readonly [z.ZodObject<{
+            params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
+            hash: z.ZodObject<{
+                method: z.ZodLiteral<"SHA256">;
+                hex: z.ZodString;
+            }, z.core.$strip>;
+            "@type": z.ZodLiteral<"HTMLImageElement">;
+            id: z.ZodUUID;
+            href: z.ZodURL;
+            expires: z.ZodOptional<z.ZodISODateTime>;
+            size: z.ZodNumber;
+            md5: z.ZodString;
+            integrity: z.ZodString;
+        }, z.core.$strip>, z.ZodObject<{
+            params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
+            hash: z.ZodObject<{
+                method: z.ZodLiteral<"SHA256">;
+                hex: z.ZodString;
+            }, z.core.$strip>;
+            "@type": z.ZodLiteral<"HTMLVideoElement">;
+            id: z.ZodUUID;
+            href: z.ZodURL;
+            expires: z.ZodOptional<z.ZodISODateTime>;
+            size: z.ZodNumber;
+            md5: z.ZodString;
+            integrity: z.ZodString;
+        }, z.core.$strip>, z.ZodObject<{
+            "@type": z.ZodLiteral<"HTMLScriptElement">;
+            id: z.ZodUUID;
+            href: z.ZodURL;
+            expires: z.ZodOptional<z.ZodISODateTime>;
+            size: z.ZodNumber;
+            hash: z.ZodObject<{
+                method: z.ZodLiteral<"SHA256">;
+                hex: z.ZodString;
+            }, z.core.$strip>;
+            md5: z.ZodString;
+            integrity: z.ZodString;
+        }, z.core.$strip>]>>>;
+    }, z.core.$strip>]>;
+    type PlaylistEntry = z.infer<typeof PlaylistEntry>;
     const Playlist: z.ZodObject<{
         "@type": z.ZodLiteral<"Playlist">;
         entries: z.ZodArray<z.ZodUnion<readonly [z.ZodObject<{
