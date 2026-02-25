@@ -1,5 +1,5 @@
 import * as z from "zod/v4";
-export declare const PublisherRequest: z.ZodObject<{
+export declare const PublishRequest: z.ZodObject<{
     tenant_id: z.ZodUUID;
     reference_id: z.ZodString;
     recipe_template: z.ZodObject<{
@@ -51,4 +51,4 @@ export declare const PublisherRequest: z.ZodObject<{
     canvas_ids: z.ZodArray<z.ZodUUID>;
     identity: z.ZodString;
 }, z.core.$strip>;
-export type PublisherRequest = z.infer<typeof PublisherRequest>;
+export type PublishRequest = z.infer<typeof PublishRequest>;

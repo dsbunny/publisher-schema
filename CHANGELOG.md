@@ -1,4 +1,18 @@
 # Changelog
+## v6.0.14
+- Migrate _tasks_ API from `publisher-schema` to internal `publisher-worker-pool`.
+- Bump to `zod@4.3.6`.
+
+## v6.0.13
+- `Tasks.Output` needs to be nullable for webhook responses.
+
+## v6.0.12
+- Add new composite `PublisherRequest` and `PublisherResponse` for public API.
+- Migrate to `@dsbunny/error-schema` and `@dsbunny/webhook-schema`.
+- New internal schema for WebHook tasks.
+- Add `job_id` to `GetJobStatusResponse`.
+- `PublishRequest` is now specifically for the action of _publishing_, whilst `PublisherRequest` is the composite of all requests to the Publisher.
+
 ## v5.0.11
 - Add `name` and `tags` to both `Recipe` and `RecipeTemplate` to allow indexing.
 

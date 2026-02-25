@@ -1,0 +1,1 @@
+{"version":3,"file":"progress.schema.js","sourceRoot":"","sources":["../src/progress.schema.ts"],"names":[],"mappings":"AAAA,mEAAmE;AAEnE,OAAO,KAAK,CAAC,MAAM,QAAQ,CAAC;AAE5B,MAAM,CAAC,MAAM,eAAe,GAAG,CAAC,CAAC,MAAM,EAAE,CAAC,GAAG,CAAC,CAAC,CAAC,CAAC,GAAG,CAAC,GAAG,CAAC;KAChD,QAAQ,CAAC,+BAA+B,CAAC,CAAC"}

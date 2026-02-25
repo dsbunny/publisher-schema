@@ -3,7 +3,7 @@
 import * as z from "zod/v4";
 import { RecipeTemplateSchema } from './recipe-template.schema.js';
 
-export const PublisherRequest = z.object({
+export const PublishRequest = z.object({
 	tenant_id: z.uuid()
 		.describe('Tenant ID'),
 	reference_id: z.string().max(255)
@@ -16,4 +16,4 @@ export const PublisherRequest = z.object({
 		.describe('Identity of the author of the job'),
 })
 	.describe('Publish job');
-export type PublisherRequest = z.infer<typeof PublisherRequest>;
+export type PublishRequest = z.infer<typeof PublishRequest>;

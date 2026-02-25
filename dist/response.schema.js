@@ -1,6 +1,6 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 import * as z from "zod/v4";
-export const PublisherResponse = z.object({
+export const PublishResponse = z.object({
     job_id: z.string().regex(/^\d+$/)
         .describe('Unique identifier for this job, can be used to query the status of the job.'),
     reference_id: z.string().max(255)
