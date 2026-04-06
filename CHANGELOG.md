@@ -1,4 +1,7 @@
 # Changelog
+## v6.0.15
+- `job_id` is a UUID.
+
 ## v6.0.14
 - Migrate _tasks_ API from `publisher-schema` to internal `publisher-worker-pool`.
 - Bump to `zod@4.3.6`.
