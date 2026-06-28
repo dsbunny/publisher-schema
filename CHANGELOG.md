@@ -1,4 +1,15 @@
 # Changelog
+## v7.0.16
+- Rename `id` for each reference to DAM assets as `asset_id` to clarify scope.
+- Move `name` and `tags` from `Recipe` to `Event` as the latter is a human construct and the former is a runtime construct.
+- Add `id` to `Recipe` as a unique identifier to replace API `job_id` usage and enable referencing via `RecipeLink` for synchronisation.
+- Add `canvas_id` and `viewport_id` to `Recipe` as part of the _baking_ process to aid synchronisation.
+- Add new `ListPublishRequest` API for enumerating publishes.
+- Add `publish_id` as unique per-_publish_ identifier, reducing confusion on `recipe_id` scoping.
+- Rename APIs based on _publish_ action rather than _recipe_ content.
+- Update _task output_ to include recipe details including DAM links, canvas and viewport IDs, enabling capture in _publish_ records.
+- Add `Publish` schema for stored state that drives definition of `PublishRequest` and `PublishResponse`.
+
 ## v6.0.15
 - `job_id` is a UUID.
 

@@ -3,9 +3,10 @@ export declare const PublishRequest: z.ZodObject<{
     tenant_id: z.ZodUUID;
     reference_id: z.ZodString;
     recipe_template: z.ZodObject<{
-        name: z.ZodString;
-        tags: z.ZodArray<z.ZodString>;
         events: z.ZodArray<z.ZodObject<{
+            event_id: z.ZodUUID;
+            name: z.ZodString;
+            tags: z.ZodArray<z.ZodString>;
             priority: z.ZodNumber;
             start: z.ZodISODateTime;
             timeZone: z.ZodString;

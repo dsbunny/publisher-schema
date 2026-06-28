@@ -55,24 +55,26 @@ export var RecipeTemplateSchema;
     })
         .describe('Recurrence rule template');
     RecipeTemplateSchema.EventTemplate = z.object({
+        event_id: z.uuid()
+            .describe('Event ID, when IDs match all items excluding name and tags must be the same'),
+        name: z.string().min(1).max(100)
+            .describe('The name of the event'),
+        tags: z.array(z.string().max(64))
+            .describe('The tags of the event'),
         priority: z.number().int().min(0).max(10)
-            .describe('Priority of the event template'),
+            .describe('Priority of the event'),
         start: z.iso.datetime()
-            .describe('ISO datetime of the start of the event template'),
+            .describe('ISO datetime of the start of the event'),
         timeZone: z.string()
-            .describe('Time zone of the event template'),
+            .describe('Time zone of the event'),
         duration: z.string()
-            .describe('Duration of the event template'),
+            .describe('Duration of the event'),
         playlist: RecipeTemplateSchema.PlaylistTemplate,
         recurrenceRules: z.array(RecipeTemplateSchema.RecurrenceRuleTemplate).optional()
             .describe('Array of recurrence rule templates'),
     })
         .describe('Event template');
     RecipeTemplateSchema.RecipeTemplate = z.object({
-        name: z.string().min(1).max(100)
-            .describe('The name of the recipe template'),
-        tags: z.array(z.string().max(64))
-            .describe('The tags of the recipe template'),
         events: z.array(RecipeTemplateSchema.EventTemplate).min(1).max(1000)
             .describe('Array of event templates'),
     })

@@ -17,8 +17,8 @@ export namespace RecipeSchema {
 	export const HTMLImageElement = z.object({
 		"@type": z.literal("HTMLImageElement")
 			.describe("Type of the HTML element"),
-		id: z.uuid()
-			.describe("ID of the image"),
+		asset_id: z.uuid()
+			.describe("DAM asset ID of the image"),
 		href: z.url().min(20).max(2048)
 			.describe("URL of the image"),
 		expires: z.iso.datetime().optional()
@@ -41,8 +41,8 @@ export namespace RecipeSchema {
 	export const HTMLVideoElement = z.object({
 		"@type": z.literal("HTMLVideoElement")
 			.describe("Type of the HTML element"),
-		id: z.uuid()
-			.describe("ID of the video"),
+		asset_id: z.uuid()
+			.describe("DAM asset ID of the video"),
 		href: z.url().min(20).max(2048)
 			.describe("URL of the video"),
 		expires: z.iso.datetime().optional()
@@ -65,8 +65,8 @@ export namespace RecipeSchema {
 	export const HTMLScriptElement = z.object({
 		"@type": z.literal("HTMLScriptElement")
 			.describe("Type of the HTML element"),
-		id: z.uuid()
-			.describe("ID of the script"),
+		asset_id: z.uuid()
+			.describe("DAM asset ID of the script"),
 		href: z.url().min(20).max(2048)
 			.describe("URL of the script"),
 		expires: z.iso.datetime().optional()
@@ -85,8 +85,8 @@ export namespace RecipeSchema {
 	export const CustomElement = z.object({
 		"@type": z.literal("CustomElement")
 			.describe("Type of the custom element"),
-		id: z.uuid()
-			.describe("ID of the custom element"),
+		asset_id: z.uuid()
+			.describe("DAM asset ID of the custom element"),
 		href: z.url().min(20).max(2048)
 			.describe("URL of the custom element"),
 		expires: z.iso.datetime().optional()
@@ -197,7 +197,11 @@ export namespace RecipeSchema {
 		"@type": z.literal("Event")
 			.describe("Type of the event"),
 		id: z.uuid()
-			.describe("ID of the event"),
+			.describe("ID of the event, when IDs match all items excluding name and tags must be the same"),
+		name: z.string().min(1).max(100)
+			.describe('The name of the event'),
+		tags: z.array(z.string().max(64))
+			.describe('The tags of the event'),
 		priority: z.number().int().min(0).max(10)
 			.describe("Priority of the event"),
 		start: z.iso.datetime()
@@ -222,8 +226,8 @@ export namespace RecipeSchema {
 	export const Transition = z.object({
 		"@type": z.literal("Transition")
 			.describe("Type of the transition"),
-		id: z.uuid()
-			.describe("ID of the transition"),
+		asset_id: z.uuid()
+			.describe("DAM asset ID of the transition"),
 		href: z.url().min(20).max(2048)
 			.describe("URL of the transition"),
 		expires: z.iso.datetime().optional()
@@ -287,10 +291,16 @@ export namespace RecipeSchema {
 
 	// Compose the final type
 	export const Recipe = z.object({
-		name: z.string().min(1).max(100)
-			.describe('The name of the recipe'),
-		tags: z.array(z.string().max(64))
-			.describe('The tags of the recipe'),
+		id: z.uuid()
+			.describe("Recipe identifier"),
+		publish_id: z.uuid()
+			.describe("Publish identifier"),
+		identity: z.string()
+			.describe("Identity of the publishing user"),
+		canvas_id: z.uuid()
+			.describe("Canvas identifier"),
+		viewport_id: z.string()
+			.describe("Viewport identifier"),
 		transition: Transition,
 		schedule: z.array(Event)
 			.describe("Array of events"),
@@ -306,8 +316,9 @@ export namespace RecipeSchema {
 	export const RecipeLink = z.object({
 		"@type": z.literal("RecipeLink")
 			.describe("Type of the recipe link"),
-		id: z.uuid()
-			.describe("ID of the recipe"),
+		recipe_id: Recipe.shape.id,
+		asset_id: z.uuid()
+			.describe("DAM asset ID of the recipe"),
 		href: z.url().min(20).max(2048)
 			.describe("URL of the recipe"),
 		expires: z.iso.datetime().optional()
