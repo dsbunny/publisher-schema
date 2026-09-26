@@ -131,6 +131,7 @@ export declare const CreatePublishRequest: z.ZodObject<{
     }, z.core.$strip>;
     canvas_ids: z.ZodArray<z.ZodUUID>;
     identity: z.ZodString;
+    client_request_token: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
 export type CreatePublishRequest = z.infer<typeof CreatePublishRequest>;
 export declare const CreatePublishResponse: z.ZodObject<{
@@ -199,7 +200,7 @@ export declare const ListPublishResponse: z.ZodObject<{
             recipe_link: z.ZodObject<{
                 "@type": z.ZodLiteral<"RecipeLink">;
                 recipe_id: z.ZodUUID;
-                asset_id: z.ZodUUID;
+                ref_id: z.ZodOptional<z.ZodString>;
                 href: z.ZodURL;
                 expires: z.ZodOptional<z.ZodISODateTime>;
                 size: z.ZodNumber;
@@ -328,6 +329,7 @@ export declare const PublisherRequest: z.ZodUnion<readonly [z.ZodObject<{}, z.co
     }, z.core.$strip>;
     canvas_ids: z.ZodArray<z.ZodUUID>;
     identity: z.ZodString;
+    client_request_token: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>, z.ZodObject<{}, z.core.$strip>]>;
 export type PublisherRequest = z.infer<typeof PublisherRequest>;
 export declare const PublisherResponse: z.ZodUnion<readonly [z.ZodObject<{
@@ -434,7 +436,7 @@ export declare const PublisherResponse: z.ZodUnion<readonly [z.ZodObject<{
             recipe_link: z.ZodObject<{
                 "@type": z.ZodLiteral<"RecipeLink">;
                 recipe_id: z.ZodUUID;
-                asset_id: z.ZodUUID;
+                ref_id: z.ZodOptional<z.ZodString>;
                 href: z.ZodURL;
                 expires: z.ZodOptional<z.ZodISODateTime>;
                 size: z.ZodNumber;

@@ -1,7 +1,7 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 
 import * as z from "zod/v4";
-import { BaseParams } from './base-params.js';
+import { BaseParams } from "@dsbunny/recipe-schema";
 
 export namespace RecipeTemplateSchema {
 

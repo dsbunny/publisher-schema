@@ -1,4 +1,10 @@
 # Changelog
+## v7.0.18
+- Add `client_request_token` to `PublishRequest` as previously hidden.
+
+## v7.0.17
+- Replace `asset_id` with optional `ref_id`.
+
 ## v7.0.16
 - Rename `id` for each reference to DAM assets as `asset_id` to clarify scope.
 - Move `name` and `tags` from `Recipe` to `Event` as the latter is a human construct and the former is a runtime construct.

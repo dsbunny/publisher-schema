@@ -14,6 +14,8 @@ export const PublishRequest = z.object({
 		.describe('List of canvas IDs'),
 	identity: z.string()
 		.describe('Identity of the author of the job'),
+	client_request_token: z.string().max(255).optional()
+		.describe('Client request token for idempotency'),
 })
 	.describe('Publish job');
 export type PublishRequest = z.infer<typeof PublishRequest>;

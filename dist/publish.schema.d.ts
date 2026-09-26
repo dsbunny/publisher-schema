@@ -107,7 +107,7 @@ export declare const Publish: z.ZodObject<{
         recipe_link: z.ZodObject<{
             "@type": z.ZodLiteral<"RecipeLink">;
             recipe_id: z.ZodUUID;
-            asset_id: z.ZodUUID;
+            ref_id: z.ZodOptional<z.ZodString>;
             href: z.ZodURL;
             expires: z.ZodOptional<z.ZodISODateTime>;
             size: z.ZodNumber;
@@ -239,7 +239,7 @@ export declare const DbDtoFromPublish: z.ZodPipe<z.ZodObject<{
         recipe_link: z.ZodObject<{
             "@type": z.ZodLiteral<"RecipeLink">;
             recipe_id: z.ZodUUID;
-            asset_id: z.ZodUUID;
+            ref_id: z.ZodOptional<z.ZodString>;
             href: z.ZodURL;
             expires: z.ZodOptional<z.ZodISODateTime>;
             size: z.ZodNumber;
@@ -396,7 +396,6 @@ export declare const DbDtoFromPublish: z.ZodPipe<z.ZodObject<{
         recipe_link: {
             "@type": "RecipeLink";
             recipe_id: string;
-            asset_id: string;
             href: string;
             size: number;
             hash: {
@@ -405,6 +404,7 @@ export declare const DbDtoFromPublish: z.ZodPipe<z.ZodObject<{
             };
             md5: string;
             integrity: string;
+            ref_id?: string | undefined;
             expires?: string | undefined;
         };
         canvas_id: string;
@@ -512,7 +512,6 @@ export declare const DbDtoToPublish: z.ZodPipe<z.ZodObject<{
         recipe_link: {
             "@type": "RecipeLink";
             recipe_id: string;
-            asset_id: string;
             href: string;
             size: number;
             hash: {
@@ -521,6 +520,7 @@ export declare const DbDtoToPublish: z.ZodPipe<z.ZodObject<{
             };
             md5: string;
             integrity: string;
+            ref_id?: string | undefined;
             expires?: string | undefined;
         };
         canvas_id: string;

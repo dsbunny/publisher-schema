@@ -51,5 +51,6 @@ export declare const PublishRequest: z.ZodObject<{
     }, z.core.$strip>;
     canvas_ids: z.ZodArray<z.ZodUUID>;
     identity: z.ZodString;
+    client_request_token: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
 export type PublishRequest = z.infer<typeof PublishRequest>;

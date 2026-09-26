@@ -1,6 +1,6 @@
 {
 	"name": "@dsbunny/publisher-schema",
-	"version": "7.0.16",
+	"version": "7.0.18",
 	"description": "Schema for the Publisher",
 	"type": "module",
 	"main": "dist/index.js",
@@ -8,6 +8,12 @@
 	"author": "Steve-o <fnjordy@gmail.com>",
 	"license": "MIT",
 	"private": false,
+	"allowScripts": {
+		"@dsbunny/error-schema": true,
+		"@dsbunny/recipe-schema": true,
+		"@dsbunny/robust-task-schema": true,
+		"@dsbunny/webhook-schema": true
+	},
 	"scripts": {
 		"build": "tsc",
 		"clean": "rm -rf dist node_modules package-lock.json",
@@ -17,6 +23,7 @@
 	},
 	"devDependencies": {
 		"@dsbunny/error-schema": "github:dsbunny/error-schema#be4645d",
+		"@dsbunny/recipe-schema": "github:dsbunny/recipe-schema#c6942a2",
 		"@dsbunny/robust-task-schema": "github:dsbunny/robust-task-schema#fe32ee4",
 		"@dsbunny/webhook-schema": "github:dsbunny/webhook-schema#4178b06",
 		"typescript": "^5.9.3",
@@ -24,6 +31,7 @@
 	},
 	"peerDependencies": {
 		"@dsbunny/error-schema": "github:dsbunny/error-schema",
+		"@dsbunny/recipe-schema": "github:dsbunny/recipe-schema",
 		"@dsbunny/robust-task-schema": "github:dsbunny/robust-task-schema",
 		"@dsbunny/webhook-schema": "github:dsbunny/webhook-schema",
 		"zod": "^4.3.0"

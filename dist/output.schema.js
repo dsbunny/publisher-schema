@@ -1,6 +1,6 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 import * as z from "zod/v4";
-import { RecipeSchema } from "./recipe.schema.js";
+import { RecipeSchema } from "@dsbunny/recipe-schema";
 export const PublishRecipeDetail = z.object({
     recipe_link: RecipeSchema.RecipeLink,
     canvas_id: z.uuid()

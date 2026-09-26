@@ -3,7 +3,7 @@ export declare const PublishRecipeDetail: z.ZodObject<{
     recipe_link: z.ZodObject<{
         "@type": z.ZodLiteral<"RecipeLink">;
         recipe_id: z.ZodUUID;
-        asset_id: z.ZodUUID;
+        ref_id: z.ZodOptional<z.ZodString>;
         href: z.ZodURL;
         expires: z.ZodOptional<z.ZodISODateTime>;
         size: z.ZodNumber;
@@ -25,7 +25,7 @@ export declare const PublishOutput: z.ZodObject<{
         recipe_link: z.ZodObject<{
             "@type": z.ZodLiteral<"RecipeLink">;
             recipe_id: z.ZodUUID;
-            asset_id: z.ZodUUID;
+            ref_id: z.ZodOptional<z.ZodString>;
             href: z.ZodURL;
             expires: z.ZodOptional<z.ZodISODateTime>;
             size: z.ZodNumber;
