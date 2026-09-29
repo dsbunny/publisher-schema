@@ -1,20 +1,20 @@
 import * as z from "zod/v4";
 export declare namespace RecipeTemplateSchema {
-    const MediaTemplate: z.ZodObject<{
+    const MediaTemplateSchema: z.ZodObject<{
         asset_id: z.ZodUUID;
         params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
         duration_seconds: z.ZodNumber;
     }, z.core.$strip>;
-    type MediaTemplate = z.infer<typeof MediaTemplate>;
-    const PlaylistTemplate: z.ZodObject<{
+    type MediaTemplate = z.infer<typeof MediaTemplateSchema>;
+    const PlaylistTemplateSchema: z.ZodObject<{
         media_templates: z.ZodArray<z.ZodObject<{
             asset_id: z.ZodUUID;
             params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
             duration_seconds: z.ZodNumber;
         }, z.core.$strip>>;
     }, z.core.$strip>;
-    type PlaylistTemplate = z.infer<typeof PlaylistTemplate>;
-    const NDay: z.ZodObject<{
+    type PlaylistTemplate = z.infer<typeof PlaylistTemplateSchema>;
+    const NDaySchema: z.ZodObject<{
         day: z.ZodEnum<{
             mo: "mo";
             tu: "tu";
@@ -26,8 +26,8 @@ export declare namespace RecipeTemplateSchema {
         }>;
         nthOfPeriod: z.ZodOptional<z.ZodNumber>;
     }, z.core.$strip>;
-    type NDay = z.infer<typeof NDay>;
-    const RecurrenceRuleTemplate: z.ZodObject<{
+    type NDay = z.infer<typeof NDaySchema>;
+    const RecurrenceRuleTemplateSchema: z.ZodObject<{
         frequency: z.ZodEnum<{
             secondly: "secondly";
             minutely: "minutely";
@@ -56,8 +56,8 @@ export declare namespace RecipeTemplateSchema {
         times: z.ZodOptional<z.ZodNumber>;
         until: z.ZodOptional<z.ZodISODateTime>;
     }, z.core.$strip>;
-    type RecurrenceRuleTemplate = z.infer<typeof RecurrenceRuleTemplate>;
-    const EventTemplate: z.ZodObject<{
+    type RecurrenceRuleTemplate = z.infer<typeof RecurrenceRuleTemplateSchema>;
+    const EventTemplateSchema: z.ZodObject<{
         event_id: z.ZodUUID;
         name: z.ZodString;
         tags: z.ZodArray<z.ZodString>;
@@ -102,8 +102,8 @@ export declare namespace RecipeTemplateSchema {
             until: z.ZodOptional<z.ZodISODateTime>;
         }, z.core.$strip>>>;
     }, z.core.$strip>;
-    type EventTemplate = z.infer<typeof EventTemplate>;
-    const RecipeTemplate: z.ZodObject<{
+    type EventTemplate = z.infer<typeof EventTemplateSchema>;
+    const RecipeTemplateSchema: z.ZodObject<{
         events: z.ZodArray<z.ZodObject<{
             event_id: z.ZodUUID;
             name: z.ZodString;
@@ -150,5 +150,5 @@ export declare namespace RecipeTemplateSchema {
             }, z.core.$strip>>>;
         }, z.core.$strip>>;
     }, z.core.$strip>;
-    type RecipeTemplate = z.infer<typeof RecipeTemplate>;
+    type RecipeTemplate = z.infer<typeof RecipeTemplateSchema>;
 }

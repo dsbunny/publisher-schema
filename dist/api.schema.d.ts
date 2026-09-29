@@ -1,43 +1,43 @@
 import * as z from "zod/v4";
-export declare const CreateUUIDsRequest: z.ZodObject<{}, z.core.$strip>;
-export type CreateUUIDsRequest = z.infer<typeof CreateUUIDsRequest>;
-export declare const CreateUUIDsResponse: z.ZodObject<{
+export declare const CreateUUIDsRequestSchema: z.ZodObject<{}, z.core.$strip>;
+export type CreateUUIDsRequest = z.infer<typeof CreateUUIDsRequestSchema>;
+export declare const CreateUUIDsResponseSchema: z.ZodObject<{
     uuids: z.ZodArray<z.ZodString>;
 }, z.core.$strip>;
-export type CreateUUIDsResponse = z.infer<typeof CreateUUIDsResponse>;
-export declare const GetPublishStatusRequest: z.ZodObject<{}, z.core.$strip>;
-export type GetPublishStatusRequest = z.infer<typeof GetPublishStatusRequest>;
-export declare const GetPublishStatusErrorResponse: z.ZodObject<{
+export type CreateUUIDsResponse = z.infer<typeof CreateUUIDsResponseSchema>;
+export declare const GetPublishStatusRequestSchema: z.ZodObject<{}, z.core.$strip>;
+export type GetPublishStatusRequest = z.infer<typeof GetPublishStatusRequestSchema>;
+export declare const GetPublishStatusErrorResponseSchema: z.ZodObject<{
     publish_id: z.ZodString;
     error: z.ZodString;
 }, z.core.$strip>;
-export type GetPublishStatusErrorResponse = z.infer<typeof GetPublishStatusErrorResponse>;
-export declare const GetPublishStatusFailedResponse: z.ZodObject<{
+export type GetPublishStatusErrorResponse = z.infer<typeof GetPublishStatusErrorResponseSchema>;
+export declare const GetPublishStatusFailedResponseSchema: z.ZodObject<{
     publish_id: z.ZodString;
     status: z.ZodLiteral<"failed">;
     error_code: z.ZodString;
     error_message: z.ZodString;
 }, z.core.$strip>;
-export type GetPublishStatusFailedResponse = z.infer<typeof GetPublishStatusFailedResponse>;
-export declare const GetPublishStatusSucceededResponse: z.ZodObject<{
+export type GetPublishStatusFailedResponse = z.infer<typeof GetPublishStatusFailedResponseSchema>;
+export declare const GetPublishStatusSucceededResponseSchema: z.ZodObject<{
     publish_id: z.ZodString;
     status: z.ZodLiteral<"succeeded">;
     progress: z.ZodLiteral<100>;
 }, z.core.$strip>;
-export type GetPublishStatusSucceededResponse = z.infer<typeof GetPublishStatusSucceededResponse>;
-export declare const GetPublishStatusRejectedResponse: z.ZodObject<{
+export type GetPublishStatusSucceededResponse = z.infer<typeof GetPublishStatusSucceededResponseSchema>;
+export declare const GetPublishStatusRejectedResponseSchema: z.ZodObject<{
     publish_id: z.ZodString;
     status: z.ZodLiteral<"rejected">;
     reason: z.ZodString;
 }, z.core.$strip>;
-export type GetPublishStatusRejectedResponse = z.infer<typeof GetPublishStatusRejectedResponse>;
-export declare const GetPublishStatusCreatedResponse: z.ZodObject<{
+export type GetPublishStatusRejectedResponse = z.infer<typeof GetPublishStatusRejectedResponseSchema>;
+export declare const GetPublishStatusCreatedResponseSchema: z.ZodObject<{
     publish_id: z.ZodString;
     status: z.ZodLiteral<"created">;
     progress: z.ZodNumber;
 }, z.core.$strip>;
-export type GetPublishStatusCreatedResponse = z.infer<typeof GetPublishStatusCreatedResponse>;
-export declare const GetPublishStatusResponse: z.ZodUnion<[z.ZodUnion<readonly [z.ZodObject<{
+export type GetPublishStatusCreatedResponse = z.infer<typeof GetPublishStatusCreatedResponseSchema>;
+export declare const GetPublishStatusResponseSchema: z.ZodUnion<[z.ZodUnion<readonly [z.ZodObject<{
     publish_id: z.ZodString;
     error: z.ZodString;
 }, z.core.$strip>, z.ZodObject<{
@@ -78,8 +78,8 @@ export declare const GetPublishStatusResponse: z.ZodUnion<[z.ZodUnion<readonly [
     status: z.ZodLiteral<"created">;
     progress: z.ZodNumber;
 }, z.core.$strip>]>>]>;
-export type GetPublishStatusResponse = z.infer<typeof GetPublishStatusResponse>;
-export declare const CreatePublishRequest: z.ZodObject<{
+export type GetPublishStatusResponse = z.infer<typeof GetPublishStatusResponseSchema>;
+export declare const CreatePublishRequestSchema: z.ZodObject<{
     tenant_id: z.ZodUUID;
     reference_id: z.ZodString;
     recipe_template: z.ZodObject<{
@@ -133,16 +133,16 @@ export declare const CreatePublishRequest: z.ZodObject<{
     identity: z.ZodString;
     client_request_token: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
-export type CreatePublishRequest = z.infer<typeof CreatePublishRequest>;
-export declare const CreatePublishResponse: z.ZodObject<{
+export type CreatePublishRequest = z.infer<typeof CreatePublishRequestSchema>;
+export declare const CreatePublishResponseSchema: z.ZodObject<{
     publish_id: z.ZodUUID;
     reference_id: z.ZodString;
     timestamp: z.ZodISODateTime;
 }, z.core.$strip>;
-export type CreatePublishResponse = z.infer<typeof CreatePublishResponse>;
-export declare const ListPublishRequest: z.ZodObject<{}, z.core.$strip>;
-export type ListPublishRequest = z.infer<typeof ListPublishRequest>;
-export declare const ListPublishResponse: z.ZodObject<{
+export type CreatePublishResponse = z.infer<typeof CreatePublishResponseSchema>;
+export declare const ListPublishRequestSchema: z.ZodObject<{}, z.core.$strip>;
+export type ListPublishRequest = z.infer<typeof ListPublishRequestSchema>;
+export declare const ListPublishResponseSchema: z.ZodObject<{
     publishes: z.ZodArray<z.ZodObject<{
         publish_id: z.ZodUUID;
         tenant_id: z.ZodUUID;
@@ -276,8 +276,8 @@ export declare const ListPublishResponse: z.ZodObject<{
     }, z.core.$strip>>;
     next_token: z.ZodNullable<z.ZodString>;
 }, z.core.$strip>;
-export type ListPublishResponse = z.infer<typeof ListPublishResponse>;
-export declare const PublisherRequest: z.ZodUnion<readonly [z.ZodObject<{}, z.core.$strip>, z.ZodObject<{}, z.core.$strip>, z.ZodObject<{
+export type ListPublishResponse = z.infer<typeof ListPublishResponseSchema>;
+export declare const PublisherRequestSchema: z.ZodUnion<readonly [z.ZodObject<{}, z.core.$strip>, z.ZodObject<{}, z.core.$strip>, z.ZodObject<{
     tenant_id: z.ZodUUID;
     reference_id: z.ZodString;
     recipe_template: z.ZodObject<{
@@ -331,8 +331,8 @@ export declare const PublisherRequest: z.ZodUnion<readonly [z.ZodObject<{}, z.co
     identity: z.ZodString;
     client_request_token: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>, z.ZodObject<{}, z.core.$strip>]>;
-export type PublisherRequest = z.infer<typeof PublisherRequest>;
-export declare const PublisherResponse: z.ZodUnion<readonly [z.ZodObject<{
+export type PublisherRequest = z.infer<typeof PublisherRequestSchema>;
+export declare const PublisherResponseSchema: z.ZodUnion<readonly [z.ZodObject<{
     uuids: z.ZodArray<z.ZodString>;
 }, z.core.$strip>, z.ZodUnion<[z.ZodUnion<readonly [z.ZodObject<{
     publish_id: z.ZodString;
@@ -517,4 +517,4 @@ export declare const PublisherResponse: z.ZodUnion<readonly [z.ZodObject<{
     detail: z.ZodString;
     timestamp: z.ZodISODateTime;
 }, z.core.$strip>]>;
-export type PublisherResponse = z.infer<typeof PublisherResponse>;
+export type PublisherResponse = z.infer<typeof PublisherResponseSchema>;

@@ -3,20 +3,20 @@
 import * as z from "zod/v4";
 import { RecipeSchema } from "@dsbunny/recipe-schema";
 
-export const PublishRecipeDetail = z.object({
-        recipe_link: RecipeSchema.RecipeLink,
+export const PublishRecipeDetailSchema = z.object({
+        recipe_link: RecipeSchema.RecipeLinkSchema,
         canvas_id: z.uuid()
                 .describe('Canvas ID associated with the recipe'),
         viewport_id: z.string()
                 .describe('Viewport ID associated with the recipe'),
 });
-export type PublishRecipeDetail = z.infer<typeof PublishRecipeDetail>;
+export type PublishRecipeDetail = z.infer<typeof PublishRecipeDetailSchema>;
 
-export const PublishOutput = z.object({
+export const PublishOutputSchema = z.object({
         publish_id: z.string()
                 .describe('Unique identifier for the publish operation'),
         report: z.array(z.string()),
-        recipe_details: z.array(PublishRecipeDetail),
+        recipe_details: z.array(PublishRecipeDetailSchema),
 })
         .describe('Publish output schema');
-export type PublishOutput = z.infer<typeof PublishOutput>;
+export type PublishOutput = z.infer<typeof PublishOutputSchema>;

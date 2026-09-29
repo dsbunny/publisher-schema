@@ -3,12 +3,12 @@
 import * as z from "zod/v4";
 import { RecipeTemplateSchema } from './recipe-template.schema.js';
 
-export const PublishRequest = z.object({
+export const PublishRequestSchema = z.object({
 	tenant_id: z.uuid()
 		.describe('Tenant ID'),
 	reference_id: z.string().max(255)
 		.describe('Reference ID of the job'),
-	recipe_template: RecipeTemplateSchema.RecipeTemplate,
+	recipe_template: RecipeTemplateSchema.RecipeTemplateSchema,
 	// WARNING: 1000 canvas is the maximum number that can be assigned to a job
 	canvas_ids: z.array(z.uuid()).min(1).max(1000)
 		.describe('List of canvas IDs'),
@@ -18,4 +18,4 @@ export const PublishRequest = z.object({
 		.describe('Client request token for idempotency'),
 })
 	.describe('Publish job');
-export type PublishRequest = z.infer<typeof PublishRequest>;
+export type PublishRequest = z.infer<typeof PublishRequestSchema>;

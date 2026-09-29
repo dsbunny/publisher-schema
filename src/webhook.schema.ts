@@ -2,28 +2,28 @@
 
 import * as z from "zod";
 import {
-        WebhookProgress,
-        WebhookRequest,
-        WebhookResponse,
+        WebhookProgressSchema,
+        WebhookRequestSchema,
+        WebhookResponseSchema,
 } from "@dsbunny/webhook-schema";
 
-export const PublisherWebhookClass = z.enum(['recipe'])
+export const PublisherWebhookClassSchema = z.enum(['recipe'])
         .describe('The class of the webhook event related to publish operations');
-export type PublisherWebhookClass = z.infer<typeof PublisherWebhookClass>;
+export type PublisherWebhookClass = z.infer<typeof PublisherWebhookClassSchema>;
 
-export const PublisherWebhookType = z.enum(['new', 'change', 'delete'])
+export const PublisherWebhookTypeSchema = z.enum(['new', 'change', 'delete'])
         .describe('The type of the webhook event related to publish operations');
-export type PublisherWebhookType = z.infer<typeof PublisherWebhookType>;
+export type PublisherWebhookType = z.infer<typeof PublisherWebhookTypeSchema>;
 
-export const PublisherWebhookRequest = WebhookRequest.extend({
-        class: PublisherWebhookClass,
-        type: PublisherWebhookType,
+export const PublisherWebhookRequestSchema = WebhookRequestSchema.extend({
+        class: PublisherWebhookClassSchema,
+        type: PublisherWebhookTypeSchema,
 })
         .describe('The schema for webhook requests sent by the publisher');
-export type PublisherWebhookRequest = z.infer<typeof PublisherWebhookRequest>;
+export type PublisherWebhookRequest = z.infer<typeof PublisherWebhookRequestSchema>;
 
-export const PublisherWebhookProgress = WebhookProgress;
-export type PublisherWebhookProgress = z.infer<typeof PublisherWebhookProgress>;
+export const PublisherWebhookProgressSchema = WebhookProgressSchema;
+export type PublisherWebhookProgress = z.infer<typeof PublisherWebhookProgressSchema>;
 
-export const PublisherWebhookResponse = WebhookResponse;
-export type PublisherWebhookResponse = z.infer<typeof PublisherWebhookResponse>;
+export const PublisherWebhookResponseSchema = WebhookResponseSchema;
+export type PublisherWebhookResponse = z.infer<typeof PublisherWebhookResponseSchema>;

@@ -1,4 +1,7 @@
 # Changelog
+## v8.0.19
+- Split schema definitions to separate Schema suffix to resolve vsCode and tooling confusion.
+
 ## v7.0.18
 - Add `client_request_token` to `PublishRequest` as previously hidden.
 

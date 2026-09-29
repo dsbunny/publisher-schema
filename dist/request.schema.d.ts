@@ -1,5 +1,5 @@
 import * as z from "zod/v4";
-export declare const PublishRequest: z.ZodObject<{
+export declare const PublishRequestSchema: z.ZodObject<{
     tenant_id: z.ZodUUID;
     reference_id: z.ZodString;
     recipe_template: z.ZodObject<{
@@ -53,4 +53,4 @@ export declare const PublishRequest: z.ZodObject<{
     identity: z.ZodString;
     client_request_token: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
-export type PublishRequest = z.infer<typeof PublishRequest>;
+export type PublishRequest = z.infer<typeof PublishRequestSchema>;

@@ -50,7 +50,7 @@ export type PublishTaskState = RobustTask.TaskState<PublishRequest, RobustTask.T
     progress?: PublishProgress;
     result?: PublishResponse;
 };
-export declare const Publish: z.ZodObject<{
+export declare const PublishSchema: z.ZodObject<{
     publish_id: z.ZodUUID;
     tenant_id: z.ZodUUID;
     reference_id: z.ZodString;
@@ -181,8 +181,8 @@ export declare const Publish: z.ZodObject<{
     modify_timestamp: z.ZodISODateTime;
     is_deleted: z.ZodDefault<z.ZodBoolean>;
 }, z.core.$strip>;
-export type Publish = z.infer<typeof Publish>;
-export declare const DbDtoFromPublish: z.ZodPipe<z.ZodObject<{
+export type Publish = z.infer<typeof PublishSchema>;
+export declare const DbDtoFromPublishSchema: z.ZodPipe<z.ZodObject<{
     publish_id: z.ZodUUID;
     tenant_id: z.ZodUUID;
     reference_id: z.ZodString;
@@ -446,7 +446,7 @@ export declare const DbDtoFromPublish: z.ZodPipe<z.ZodObject<{
     modify_timestamp: string;
     is_deleted: boolean;
 }>>;
-export declare const DbDtoToPublish: z.ZodPipe<z.ZodObject<{
+export declare const DbDtoToPublishSchema: z.ZodPipe<z.ZodObject<{
     publish_id: z.ZodUUID;
     tenant_id: z.ZodUUID;
     reference_id: z.ZodString;

@@ -1,6 +1,6 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 import * as z from "zod/v4";
-export const PublishResponse = z.object({
+export const PublishResponseSchema = z.object({
     publish_id: z.uuid()
         .describe('Unique identifier for this publish, can be used to query the status of the publish.'),
     reference_id: z.string().max(255)

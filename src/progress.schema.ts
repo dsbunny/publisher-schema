@@ -2,6 +2,6 @@
 
 import * as z from "zod/v4";
 
-export const PublishProgress = z.number().min(0).max(100)
+export const PublishProgressSchema = z.number().min(0).max(100)
         .describe('Publisher job progress schema');
-export type PublishProgress = z.infer<typeof PublishProgress>;
+export type PublishProgress = z.infer<typeof PublishProgressSchema>;

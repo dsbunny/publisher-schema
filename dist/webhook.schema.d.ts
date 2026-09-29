@@ -1,15 +1,15 @@
 import * as z from "zod";
-export declare const PublisherWebhookClass: z.ZodEnum<{
+export declare const PublisherWebhookClassSchema: z.ZodEnum<{
     recipe: "recipe";
 }>;
-export type PublisherWebhookClass = z.infer<typeof PublisherWebhookClass>;
-export declare const PublisherWebhookType: z.ZodEnum<{
+export type PublisherWebhookClass = z.infer<typeof PublisherWebhookClassSchema>;
+export declare const PublisherWebhookTypeSchema: z.ZodEnum<{
     new: "new";
     change: "change";
     delete: "delete";
 }>;
-export type PublisherWebhookType = z.infer<typeof PublisherWebhookType>;
-export declare const PublisherWebhookRequest: z.ZodObject<{
+export type PublisherWebhookType = z.infer<typeof PublisherWebhookTypeSchema>;
+export declare const PublisherWebhookRequestSchema: z.ZodObject<{
     tenant_id: z.ZodUUID;
     ref_id: z.ZodUUID;
     trace_id: z.ZodOptional<z.ZodString>;
@@ -22,8 +22,8 @@ export declare const PublisherWebhookRequest: z.ZodObject<{
         delete: "delete";
     }>;
 }, z.core.$strip>;
-export type PublisherWebhookRequest = z.infer<typeof PublisherWebhookRequest>;
-export declare const PublisherWebhookProgress: z.ZodNull;
-export type PublisherWebhookProgress = z.infer<typeof PublisherWebhookProgress>;
-export declare const PublisherWebhookResponse: z.ZodObject<{}, z.core.$strip>;
-export type PublisherWebhookResponse = z.infer<typeof PublisherWebhookResponse>;
+export type PublisherWebhookRequest = z.infer<typeof PublisherWebhookRequestSchema>;
+export declare const PublisherWebhookProgressSchema: z.ZodNull;
+export type PublisherWebhookProgress = z.infer<typeof PublisherWebhookProgressSchema>;
+export declare const PublisherWebhookResponseSchema: z.ZodObject<{}, z.core.$strip>;
+export type PublisherWebhookResponse = z.infer<typeof PublisherWebhookResponseSchema>;

@@ -1,41 +1,41 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 
 import * as z from "zod/v4";
-import { BaseParams } from "@dsbunny/recipe-schema";
+import { BaseParamsSchema } from "@dsbunny/recipe-schema";
 
 export namespace RecipeTemplateSchema {
 
-	export const MediaTemplate = z.object({
+	export const MediaTemplateSchema = z.object({
 		asset_id: z.uuid()
 			.describe('Asset ID'),
-		params: BaseParams.optional()
+		params: BaseParamsSchema.optional()
 			.describe('Runtime parameters for the asset'),
 		// WARNING: 86400 seconds is the maximum duration of a media template
 		duration_seconds: z.number().min(1).max(86400)
 			.describe('Duration of the asset in seconds'),
 	})
 		.describe('Media template');
-	export type MediaTemplate = z.infer<typeof MediaTemplate>;
+	export type MediaTemplate = z.infer<typeof MediaTemplateSchema>;
 
-	export const PlaylistTemplate = z.object({
+	export const PlaylistTemplateSchema = z.object({
 		// WARNING: 1000 media templates is the maximum number of media templates that can be assigned to a playlist template
-		media_templates: z.array(MediaTemplate).min(1).max(1000)
+		media_templates: z.array(MediaTemplateSchema).min(1).max(1000)
 			.describe('Array of media templates'),
 	})
 		.describe('Playlist template');
-	export type PlaylistTemplate = z.infer<typeof PlaylistTemplate>;
+	export type PlaylistTemplate = z.infer<typeof PlaylistTemplateSchema>;
 
 	// e.g. MO for Monday, 2MO for the second Monday of the month.
-	export const NDay = z.object({
+	export const NDaySchema = z.object({
 		day: z.enum(['mo', 'tu', 'we', 'th', 'fr', 'sa', 'su'])
 			.describe('Day of the week'),
 		nthOfPeriod: z.number().int().optional()
 			.describe('Nth day of the period'),
 	})
 		.describe('Nth day');
-	export type NDay = z.infer<typeof NDay>;
+	export type NDay = z.infer<typeof NDaySchema>;
 
-	export const RecurrenceRuleTemplate = z.object({
+	export const RecurrenceRuleTemplateSchema = z.object({
 		frequency: z.enum([
 			'secondly',
 			'minutely',
@@ -48,7 +48,7 @@ export namespace RecipeTemplateSchema {
 			.describe('Frequency of the recurrence rule'),
 		interval: z.number().int().min(1).max(1000).optional()
 			.describe('Interval of the recurrence rule'),
-		byDay: z.array(NDay).optional()
+		byDay: z.array(NDaySchema).optional()
 			.describe('Array of Nth days'),
 		byMonthDay: z.array(z.number().int().min(1).max(31)).optional()
 			.describe('Array of month days'),
@@ -62,9 +62,9 @@ export namespace RecipeTemplateSchema {
 			.describe('DateTime until the recurrence rule repeats'),
 	})
 		.describe('Recurrence rule template');
-	export type RecurrenceRuleTemplate = z.infer<typeof RecurrenceRuleTemplate>;
+	export type RecurrenceRuleTemplate = z.infer<typeof RecurrenceRuleTemplateSchema>;
 
-	export const EventTemplate = z.object({
+	export const EventTemplateSchema = z.object({
 		event_id: z.uuid()
 			.describe('Event ID, when IDs match all items excluding name and tags must be the same'),
 		name: z.string().min(1).max(100)
@@ -79,17 +79,17 @@ export namespace RecipeTemplateSchema {
 			.describe('Time zone of the event'),
 		duration: z.string()
 			.describe('Duration of the event'),
-		playlist: PlaylistTemplate,
-		recurrenceRules: z.array(RecurrenceRuleTemplate).optional()
+		playlist: PlaylistTemplateSchema,
+		recurrenceRules: z.array(RecurrenceRuleTemplateSchema).optional()
 			.describe('Array of recurrence rule templates'),
 	})
 		.describe('Event template');
-	export type EventTemplate = z.infer<typeof EventTemplate>;
+	export type EventTemplate = z.infer<typeof EventTemplateSchema>;
 
-	export const RecipeTemplate = z.object({
-		events: z.array(EventTemplate).min(1).max(1000)
+	export const RecipeTemplateSchema = z.object({
+		events: z.array(EventTemplateSchema).min(1).max(1000)
 			.describe('Array of event templates'),
 	})
 		.describe('Recipe template');
-	export type RecipeTemplate = z.infer<typeof RecipeTemplate>;
+	export type RecipeTemplate = z.infer<typeof RecipeTemplateSchema>;
 }

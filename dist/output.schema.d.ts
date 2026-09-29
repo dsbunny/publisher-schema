@@ -1,5 +1,5 @@
 import * as z from "zod/v4";
-export declare const PublishRecipeDetail: z.ZodObject<{
+export declare const PublishRecipeDetailSchema: z.ZodObject<{
     recipe_link: z.ZodObject<{
         "@type": z.ZodLiteral<"RecipeLink">;
         recipe_id: z.ZodUUID;
@@ -17,8 +17,8 @@ export declare const PublishRecipeDetail: z.ZodObject<{
     canvas_id: z.ZodUUID;
     viewport_id: z.ZodString;
 }, z.core.$strip>;
-export type PublishRecipeDetail = z.infer<typeof PublishRecipeDetail>;
-export declare const PublishOutput: z.ZodObject<{
+export type PublishRecipeDetail = z.infer<typeof PublishRecipeDetailSchema>;
+export declare const PublishOutputSchema: z.ZodObject<{
     publish_id: z.ZodString;
     report: z.ZodArray<z.ZodString>;
     recipe_details: z.ZodArray<z.ZodObject<{
@@ -40,4 +40,4 @@ export declare const PublishOutput: z.ZodObject<{
         viewport_id: z.ZodString;
     }, z.core.$strip>>;
 }, z.core.$strip>;
-export type PublishOutput = z.infer<typeof PublishOutput>;
+export type PublishOutput = z.infer<typeof PublishOutputSchema>;

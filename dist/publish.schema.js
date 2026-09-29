@@ -2,30 +2,30 @@
 import * as z from "zod/v4";
 import { RobustTask } from "@dsbunny/robust-task-schema";
 import { jsonSafeParser } from './json-safe-parser.js';
-import { PublishRecipeDetail } from "./output.schema.js";
-import { PublishProgress } from "./progress.schema.js";
+import { PublishRecipeDetailSchema } from "./output.schema.js";
+import { PublishProgressSchema } from "./progress.schema.js";
 import { RecipeTemplateSchema } from './recipe-template.schema.js';
-import { PublishResponse } from "./response.schema.js";
-import { sqliteDateSchema } from './sqlite-date.schema.js';
+import { PublishResponseSchema } from "./response.schema.js";
+import { SqliteDateSchema } from './sqlite-date.schema.js';
 export const PublishTaskStateSchema = RobustTask.TaskStateSchema.extend({
-    progress: PublishProgress.optional(),
-    result: PublishResponse.optional(),
+    progress: PublishProgressSchema.optional(),
+    result: PublishResponseSchema.optional(),
 })
     .describe('The state of the publish task');
-export const Publish = z.object({
+export const PublishSchema = z.object({
     publish_id: z.uuid()
         .describe('Unique identifier for the publish job'),
     tenant_id: z.uuid()
         .describe('Tenant ID associated with the publish job'),
     reference_id: z.string().max(255)
         .describe('Reference ID of the publish job'),
-    recipe_template: RecipeTemplateSchema.RecipeTemplate
+    recipe_template: RecipeTemplateSchema.RecipeTemplateSchema
         .describe('Recipe template used for the publish job'),
     canvas_ids: z.array(z.uuid()).min(1).max(1000)
         .describe('List of canvas IDs associated with the publish job'),
     identity: z.string()
         .describe('Identity of the author of the publish job'),
-    recipe_details: z.array(PublishRecipeDetail)
+    recipe_details: z.array(PublishRecipeDetailSchema)
         .describe('Details of the recipes associated with the publish job'),
     task_publish_state: PublishTaskStateSchema,
     task_publish_status: z.enum(RobustTask.StatusValues),
@@ -36,14 +36,14 @@ export const Publish = z.object({
     is_deleted: z.boolean().default(false)
         .describe('Whether the publish job is deleted'),
 });
-export const DbDtoFromPublish = Publish.transform((publish) => {
+export const DbDtoFromPublishSchema = PublishSchema.transform((publish) => {
     return {
         ...publish,
         recipe_details: JSON.stringify(publish.recipe_details),
         task_publish_state: JSON.stringify(publish.task_publish_state),
     };
 });
-export const DbDtoToPublish = z.object({
+export const DbDtoToPublishSchema = z.object({
     publish_id: z.uuid(),
     tenant_id: z.uuid(),
     reference_id: z.string().max(255),
@@ -53,12 +53,12 @@ export const DbDtoToPublish = z.object({
     recipe_details: z.string().max(65535).nullable(), // Stored as JSON string
     task_publish_state: z.string().max(65535).nullable(), // Stored as JSON string
     task_publish_status: z.enum(RobustTask.StatusValues),
-    create_timestamp: sqliteDateSchema,
-    modify_timestamp: sqliteDateSchema,
+    create_timestamp: SqliteDateSchema,
+    modify_timestamp: SqliteDateSchema,
     is_deleted: z.boolean(),
 })
     .transform((dto, ctx) => {
-    const recipe_template_result = jsonSafeParser(RecipeTemplateSchema.RecipeTemplate).safeParse(dto.recipe_template);
+    const recipe_template_result = jsonSafeParser(RecipeTemplateSchema.RecipeTemplateSchema).safeParse(dto.recipe_template);
     if (!recipe_template_result.success) {
         ctx.addIssue({
             code: "custom",
@@ -80,7 +80,7 @@ export const DbDtoToPublish = z.object({
     }
     const recipe_details_result = !dto.recipe_details
         ? { success: true, data: [], error: undefined }
-        : jsonSafeParser(z.array(PublishRecipeDetail)).safeParse(dto.recipe_details);
+        : jsonSafeParser(z.array(PublishRecipeDetailSchema)).safeParse(dto.recipe_details);
     if (!recipe_details_result.success) {
         ctx.addIssue({
             code: "custom",
