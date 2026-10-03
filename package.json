@@ -23,7 +23,7 @@
 	},
 	"devDependencies": {
 		"@dsbunny/error-schema": "github:dsbunny/error-schema#86d038b",
-		"@dsbunny/recipe-schema": "github:dsbunny/recipe-schema#77d1c17",
+		"@dsbunny/recipe-schema": "github:dsbunny/recipe-schema#000e141",
 		"@dsbunny/robust-task-schema": "github:dsbunny/robust-task-schema#fe32ee4",
 		"@dsbunny/webhook-schema": "github:dsbunny/webhook-schema#de1d05d",
 		"typescript": "^5.9.3",
