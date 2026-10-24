@@ -1,4 +1,4 @@
-import * as z from "zod/v4";
+import * as z from 'zod';
 export declare const PublishResponseSchema: z.ZodObject<{
     publish_id: z.ZodUUID;
     reference_id: z.ZodString;

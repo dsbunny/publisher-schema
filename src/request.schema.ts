@@ -1,6 +1,7 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 
-import * as z from "zod/v4";
+import * as z from 'zod';
+import { dsbunnyRegistry } from '@dsbunny/zod-registry';
 import { RecipeTemplateSchema } from './recipe-template.schema.js';
 
 export const PublishRequestSchema = z.object({
@@ -16,6 +17,8 @@ export const PublishRequestSchema = z.object({
 		.describe('Identity of the author of the job'),
 	client_request_token: z.string().max(255).optional()
 		.describe('Client request token for idempotency'),
-})
-	.describe('Publish job');
+}).register(dsbunnyRegistry, {
+	id: 'PublishRequestSchema',
+	description: 'Publish request schema.',
+});
 export type PublishRequest = z.infer<typeof PublishRequestSchema>;

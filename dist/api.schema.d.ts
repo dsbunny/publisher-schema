@@ -1,4 +1,4 @@
-import * as z from "zod/v4";
+import * as z from 'zod';
 export declare const CreateUUIDsRequestSchema: z.ZodObject<{}, z.core.$strip>;
 export type CreateUUIDsRequest = z.infer<typeof CreateUUIDsRequestSchema>;
 export declare const CreateUUIDsResponseSchema: z.ZodObject<{

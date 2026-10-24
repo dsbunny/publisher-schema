@@ -1,4 +1,11 @@
 # Changelog
+## v8.1.21
+- Add `id` _ZOD_ metadata for schemas.
+- Normalize _ZOD_ imports to `zod` per upstream recommendation.
+
+## v8.0.20
+- Specialise `publish_id` schema to be of type _uuid_ instead of just a _string_.
+
 ## v8.0.19
 - Split schema definitions to separate Schema suffix to resolve vsCode and tooling confusion.
 

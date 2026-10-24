@@ -1,4 +1,4 @@
-import * as z from "zod/v4";
+import * as z from 'zod';
 export declare const PublishRecipeDetailSchema: z.ZodObject<{
     recipe_link: z.ZodObject<{
         "@type": z.ZodLiteral<"RecipeLink">;
@@ -19,7 +19,7 @@ export declare const PublishRecipeDetailSchema: z.ZodObject<{
 }, z.core.$strip>;
 export type PublishRecipeDetail = z.infer<typeof PublishRecipeDetailSchema>;
 export declare const PublishOutputSchema: z.ZodObject<{
-    publish_id: z.ZodString;
+    publish_id: z.ZodUUID;
     report: z.ZodArray<z.ZodString>;
     recipe_details: z.ZodArray<z.ZodObject<{
         recipe_link: z.ZodObject<{

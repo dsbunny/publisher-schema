@@ -1,5 +1,6 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
-import * as z from "zod/v4";
+import * as z from 'zod';
+import { dsbunnyRegistry } from '@dsbunny/zod-registry';
 import { BaseParamsSchema } from "@dsbunny/recipe-schema";
 export var RecipeTemplateSchema;
 (function (RecipeTemplateSchema_1) {
@@ -11,22 +12,28 @@ export var RecipeTemplateSchema;
         // WARNING: 86400 seconds is the maximum duration of a media template
         duration_seconds: z.number().min(1).max(86400)
             .describe('Duration of the asset in seconds'),
-    })
-        .describe('Media template');
+    }).register(dsbunnyRegistry, {
+        id: 'MediaTemplateSchema',
+        description: 'Media template schema.',
+    });
     RecipeTemplateSchema_1.PlaylistTemplateSchema = z.object({
         // WARNING: 1000 media templates is the maximum number of media templates that can be assigned to a playlist template
         media_templates: z.array(RecipeTemplateSchema_1.MediaTemplateSchema).min(1).max(1000)
             .describe('Array of media templates'),
-    })
-        .describe('Playlist template');
+    }).register(dsbunnyRegistry, {
+        id: 'PlaylistTemplateSchema',
+        description: 'Playlist template schema.',
+    });
     // e.g. MO for Monday, 2MO for the second Monday of the month.
     RecipeTemplateSchema_1.NDaySchema = z.object({
         day: z.enum(['mo', 'tu', 'we', 'th', 'fr', 'sa', 'su'])
             .describe('Day of the week'),
         nthOfPeriod: z.number().int().optional()
             .describe('Nth day of the period'),
-    })
-        .describe('Nth day');
+    }).register(dsbunnyRegistry, {
+        id: 'NDaySchema',
+        description: 'Nth day schema.',
+    });
     RecipeTemplateSchema_1.RecurrenceRuleTemplateSchema = z.object({
         frequency: z.enum([
             'secondly',
@@ -52,8 +59,10 @@ export var RecipeTemplateSchema;
             .describe('Number of times the recurrence rule repeats'),
         until: z.iso.datetime().optional()
             .describe('DateTime until the recurrence rule repeats'),
-    })
-        .describe('Recurrence rule template');
+    }).register(dsbunnyRegistry, {
+        id: 'RecurrenceRuleTemplateSchema',
+        description: 'Recurrence rule template schema.',
+    });
     RecipeTemplateSchema_1.EventTemplateSchema = z.object({
         event_id: z.uuid()
             .describe('Event ID, when IDs match all items excluding name and tags must be the same'),
@@ -72,12 +81,16 @@ export var RecipeTemplateSchema;
         playlist: RecipeTemplateSchema_1.PlaylistTemplateSchema,
         recurrenceRules: z.array(RecipeTemplateSchema_1.RecurrenceRuleTemplateSchema).optional()
             .describe('Array of recurrence rule templates'),
-    })
-        .describe('Event template');
+    }).register(dsbunnyRegistry, {
+        id: 'EventTemplateSchema',
+        description: 'Event template schema.',
+    });
     RecipeTemplateSchema_1.RecipeTemplateSchema = z.object({
         events: z.array(RecipeTemplateSchema_1.EventTemplateSchema).min(1).max(1000)
             .describe('Array of event templates'),
-    })
-        .describe('Recipe template');
+    }).register(dsbunnyRegistry, {
+        id: 'RecipeTemplateSchema',
+        description: 'Recipe template schema.',
+    });
 })(RecipeTemplateSchema || (RecipeTemplateSchema = {}));
 //# sourceMappingURL=recipe-template.schema.js.map
