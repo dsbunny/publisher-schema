@@ -1,4 +1,7 @@
 # Changelog
+## v9.0.22
+- Replace `PlaylistTemplateSchema` with just a `playlist_id` for expansion in the _publisher_.
+
 ## v8.1.21
 - Add `id` _ZOD_ metadata for schemas.
 - Normalize _ZOD_ imports to `zod` per upstream recommendation.

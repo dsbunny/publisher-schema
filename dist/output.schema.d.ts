@@ -8,6 +8,7 @@ export declare const PublishRecipeDetailSchema: z.ZodObject<{
         expires: z.ZodOptional<z.ZodISODateTime>;
         size: z.ZodNumber;
         hash: z.ZodObject<{
+            "@type": z.ZodLiteral<"HashValue">;
             method: z.ZodLiteral<"SHA256">;
             hex: z.ZodString;
         }, z.core.$strip>;
@@ -30,6 +31,7 @@ export declare const PublishOutputSchema: z.ZodObject<{
             expires: z.ZodOptional<z.ZodISODateTime>;
             size: z.ZodNumber;
             hash: z.ZodObject<{
+                "@type": z.ZodLiteral<"HashValue">;
                 method: z.ZodLiteral<"SHA256">;
                 hex: z.ZodString;
             }, z.core.$strip>;

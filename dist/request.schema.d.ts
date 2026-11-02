@@ -11,13 +11,7 @@ export declare const PublishRequestSchema: z.ZodObject<{
             start: z.ZodISODateTime;
             timeZone: z.ZodString;
             duration: z.ZodString;
-            playlist: z.ZodObject<{
-                media_templates: z.ZodArray<z.ZodObject<{
-                    asset_id: z.ZodUUID;
-                    params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
-                    duration_seconds: z.ZodNumber;
-                }, z.core.$strip>>;
-            }, z.core.$strip>;
+            playlist_id: z.ZodUUID;
             recurrenceRules: z.ZodOptional<z.ZodArray<z.ZodObject<{
                 frequency: z.ZodEnum<{
                     secondly: "secondly";

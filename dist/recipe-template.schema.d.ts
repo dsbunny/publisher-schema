@@ -1,19 +1,5 @@
 import * as z from 'zod';
 export declare namespace RecipeTemplateSchema {
-    const MediaTemplateSchema: z.ZodObject<{
-        asset_id: z.ZodUUID;
-        params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
-        duration_seconds: z.ZodNumber;
-    }, z.core.$strip>;
-    type MediaTemplate = z.infer<typeof MediaTemplateSchema>;
-    const PlaylistTemplateSchema: z.ZodObject<{
-        media_templates: z.ZodArray<z.ZodObject<{
-            asset_id: z.ZodUUID;
-            params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
-            duration_seconds: z.ZodNumber;
-        }, z.core.$strip>>;
-    }, z.core.$strip>;
-    type PlaylistTemplate = z.infer<typeof PlaylistTemplateSchema>;
     const NDaySchema: z.ZodObject<{
         day: z.ZodEnum<{
             mo: "mo";
@@ -65,13 +51,7 @@ export declare namespace RecipeTemplateSchema {
         start: z.ZodISODateTime;
         timeZone: z.ZodString;
         duration: z.ZodString;
-        playlist: z.ZodObject<{
-            media_templates: z.ZodArray<z.ZodObject<{
-                asset_id: z.ZodUUID;
-                params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
-                duration_seconds: z.ZodNumber;
-            }, z.core.$strip>>;
-        }, z.core.$strip>;
+        playlist_id: z.ZodUUID;
         recurrenceRules: z.ZodOptional<z.ZodArray<z.ZodObject<{
             frequency: z.ZodEnum<{
                 secondly: "secondly";
@@ -112,13 +92,7 @@ export declare namespace RecipeTemplateSchema {
             start: z.ZodISODateTime;
             timeZone: z.ZodString;
             duration: z.ZodString;
-            playlist: z.ZodObject<{
-                media_templates: z.ZodArray<z.ZodObject<{
-                    asset_id: z.ZodUUID;
-                    params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
-                    duration_seconds: z.ZodNumber;
-                }, z.core.$strip>>;
-            }, z.core.$strip>;
+            playlist_id: z.ZodUUID;
             recurrenceRules: z.ZodOptional<z.ZodArray<z.ZodObject<{
                 frequency: z.ZodEnum<{
                     secondly: "secondly";

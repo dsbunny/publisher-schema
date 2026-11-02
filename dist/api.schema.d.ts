@@ -91,13 +91,7 @@ export declare const CreatePublishRequestSchema: z.ZodObject<{
             start: z.ZodISODateTime;
             timeZone: z.ZodString;
             duration: z.ZodString;
-            playlist: z.ZodObject<{
-                media_templates: z.ZodArray<z.ZodObject<{
-                    asset_id: z.ZodUUID;
-                    params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
-                    duration_seconds: z.ZodNumber;
-                }, z.core.$strip>>;
-            }, z.core.$strip>;
+            playlist_id: z.ZodUUID;
             recurrenceRules: z.ZodOptional<z.ZodArray<z.ZodObject<{
                 frequency: z.ZodEnum<{
                     secondly: "secondly";
@@ -156,13 +150,7 @@ export declare const ListPublishResponseSchema: z.ZodObject<{
                 start: z.ZodISODateTime;
                 timeZone: z.ZodString;
                 duration: z.ZodString;
-                playlist: z.ZodObject<{
-                    media_templates: z.ZodArray<z.ZodObject<{
-                        asset_id: z.ZodUUID;
-                        params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
-                        duration_seconds: z.ZodNumber;
-                    }, z.core.$strip>>;
-                }, z.core.$strip>;
+                playlist_id: z.ZodUUID;
                 recurrenceRules: z.ZodOptional<z.ZodArray<z.ZodObject<{
                     frequency: z.ZodEnum<{
                         secondly: "secondly";
@@ -205,6 +193,7 @@ export declare const ListPublishResponseSchema: z.ZodObject<{
                 expires: z.ZodOptional<z.ZodISODateTime>;
                 size: z.ZodNumber;
                 hash: z.ZodObject<{
+                    "@type": z.ZodLiteral<"HashValue">;
                     method: z.ZodLiteral<"SHA256">;
                     hex: z.ZodString;
                 }, z.core.$strip>;
@@ -289,13 +278,7 @@ export declare const PublisherRequestSchema: z.ZodUnion<readonly [z.ZodObject<{}
             start: z.ZodISODateTime;
             timeZone: z.ZodString;
             duration: z.ZodString;
-            playlist: z.ZodObject<{
-                media_templates: z.ZodArray<z.ZodObject<{
-                    asset_id: z.ZodUUID;
-                    params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
-                    duration_seconds: z.ZodNumber;
-                }, z.core.$strip>>;
-            }, z.core.$strip>;
+            playlist_id: z.ZodUUID;
             recurrenceRules: z.ZodOptional<z.ZodArray<z.ZodObject<{
                 frequency: z.ZodEnum<{
                     secondly: "secondly";
@@ -392,13 +375,7 @@ export declare const PublisherResponseSchema: z.ZodUnion<readonly [z.ZodObject<{
                 start: z.ZodISODateTime;
                 timeZone: z.ZodString;
                 duration: z.ZodString;
-                playlist: z.ZodObject<{
-                    media_templates: z.ZodArray<z.ZodObject<{
-                        asset_id: z.ZodUUID;
-                        params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
-                        duration_seconds: z.ZodNumber;
-                    }, z.core.$strip>>;
-                }, z.core.$strip>;
+                playlist_id: z.ZodUUID;
                 recurrenceRules: z.ZodOptional<z.ZodArray<z.ZodObject<{
                     frequency: z.ZodEnum<{
                         secondly: "secondly";
@@ -441,6 +418,7 @@ export declare const PublisherResponseSchema: z.ZodUnion<readonly [z.ZodObject<{
                 expires: z.ZodOptional<z.ZodISODateTime>;
                 size: z.ZodNumber;
                 hash: z.ZodObject<{
+                    "@type": z.ZodLiteral<"HashValue">;
                     method: z.ZodLiteral<"SHA256">;
                     hex: z.ZodString;
                 }, z.core.$strip>;

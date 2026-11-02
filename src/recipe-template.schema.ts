@@ -2,33 +2,8 @@
 
 import * as z from 'zod';
 import { dsbunnyRegistry } from '@dsbunny/zod-registry';
-import { BaseParamsSchema } from "@dsbunny/recipe-schema";
 
 export namespace RecipeTemplateSchema {
-
-	export const MediaTemplateSchema = z.object({
-		asset_id: z.uuid()
-			.describe('Asset ID'),
-		params: BaseParamsSchema.optional()
-			.describe('Runtime parameters for the asset'),
-		// WARNING: 86400 seconds is the maximum duration of a media template
-		duration_seconds: z.number().min(1).max(86400)
-			.describe('Duration of the asset in seconds'),
-	}).register(dsbunnyRegistry, {
-		id: 'MediaTemplateSchema',
-		description: 'Media template schema.',
-	});
-	export type MediaTemplate = z.infer<typeof MediaTemplateSchema>;
-
-	export const PlaylistTemplateSchema = z.object({
-		// WARNING: 1000 media templates is the maximum number of media templates that can be assigned to a playlist template
-		media_templates: z.array(MediaTemplateSchema).min(1).max(1000)
-			.describe('Array of media templates'),
-	}).register(dsbunnyRegistry, {
-		id: 'PlaylistTemplateSchema',
-		description: 'Playlist template schema.',
-	});
-	export type PlaylistTemplate = z.infer<typeof PlaylistTemplateSchema>;
 
 	// e.g. MO for Monday, 2MO for the second Monday of the month.
 	export const NDaySchema = z.object({
@@ -88,7 +63,8 @@ export namespace RecipeTemplateSchema {
 			.describe('Time zone of the event'),
 		duration: z.string()
 			.describe('Duration of the event'),
-		playlist: PlaylistTemplateSchema,
+		playlist_id: z.uuid()
+			.describe('Playlist ID'),
 		recurrenceRules: z.array(RecurrenceRuleTemplateSchema).optional()
 			.describe('Array of recurrence rule templates'),
 	}).register(dsbunnyRegistry, {
