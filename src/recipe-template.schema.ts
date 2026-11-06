@@ -51,10 +51,6 @@ export namespace RecipeTemplateSchema {
 	export const EventTemplateSchema = z.object({
 		event_id: z.uuid()
 			.describe('Event ID, when IDs match all items excluding name and tags must be the same'),
-		name: z.string().min(1).max(100)
-			.describe('The name of the event'),
-		tags: z.array(z.string().max(64))
-			.describe('The tags of the event'),
 		priority: z.number().int().min(0).max(10)
 			.describe('Priority of the event'),
 		start: z.iso.datetime()

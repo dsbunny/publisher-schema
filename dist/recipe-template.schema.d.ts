@@ -45,8 +45,6 @@ export declare namespace RecipeTemplateSchema {
     type RecurrenceRuleTemplate = z.infer<typeof RecurrenceRuleTemplateSchema>;
     const EventTemplateSchema: z.ZodObject<{
         event_id: z.ZodUUID;
-        name: z.ZodString;
-        tags: z.ZodArray<z.ZodString>;
         priority: z.ZodNumber;
         start: z.ZodISODateTime;
         timeZone: z.ZodString;
@@ -86,8 +84,6 @@ export declare namespace RecipeTemplateSchema {
     const RecipeTemplateSchema: z.ZodObject<{
         events: z.ZodArray<z.ZodObject<{
             event_id: z.ZodUUID;
-            name: z.ZodString;
-            tags: z.ZodArray<z.ZodString>;
             priority: z.ZodNumber;
             start: z.ZodISODateTime;
             timeZone: z.ZodString;

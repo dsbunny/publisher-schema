@@ -57,8 +57,6 @@ export declare const PublishSchema: z.ZodObject<{
     recipe_template: z.ZodObject<{
         events: z.ZodArray<z.ZodObject<{
             event_id: z.ZodUUID;
-            name: z.ZodString;
-            tags: z.ZodArray<z.ZodString>;
             priority: z.ZodNumber;
             start: z.ZodISODateTime;
             timeZone: z.ZodString;

@@ -85,8 +85,6 @@ export declare const CreatePublishRequestSchema: z.ZodObject<{
     recipe_template: z.ZodObject<{
         events: z.ZodArray<z.ZodObject<{
             event_id: z.ZodUUID;
-            name: z.ZodString;
-            tags: z.ZodArray<z.ZodString>;
             priority: z.ZodNumber;
             start: z.ZodISODateTime;
             timeZone: z.ZodString;
@@ -144,8 +142,6 @@ export declare const ListPublishResponseSchema: z.ZodObject<{
         recipe_template: z.ZodObject<{
             events: z.ZodArray<z.ZodObject<{
                 event_id: z.ZodUUID;
-                name: z.ZodString;
-                tags: z.ZodArray<z.ZodString>;
                 priority: z.ZodNumber;
                 start: z.ZodISODateTime;
                 timeZone: z.ZodString;
@@ -272,8 +268,6 @@ export declare const PublisherRequestSchema: z.ZodUnion<readonly [z.ZodObject<{}
     recipe_template: z.ZodObject<{
         events: z.ZodArray<z.ZodObject<{
             event_id: z.ZodUUID;
-            name: z.ZodString;
-            tags: z.ZodArray<z.ZodString>;
             priority: z.ZodNumber;
             start: z.ZodISODateTime;
             timeZone: z.ZodString;
@@ -369,8 +363,6 @@ export declare const PublisherResponseSchema: z.ZodUnion<readonly [z.ZodObject<{
         recipe_template: z.ZodObject<{
             events: z.ZodArray<z.ZodObject<{
                 event_id: z.ZodUUID;
-                name: z.ZodString;
-                tags: z.ZodArray<z.ZodString>;
                 priority: z.ZodNumber;
                 start: z.ZodISODateTime;
                 timeZone: z.ZodString;
