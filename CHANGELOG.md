@@ -1,6 +1,7 @@
 # Changelog
 ## v9.0.22
-- Replace `PlaylistTemplateSchema` with just a `playlist_id` for expansion in the _publisher_.
+- Drop `event_id` in template for server generation, alongside `playlist_id`.  Note that `event_id` only needs to be scoped to the previous _recipe_ to enable dynamic updating, whilst `playlist_id` needs scoped to the maximum cache size on a _player device_.
+- Add `version` to `MediaTemplateSchema` to tie to given asset version.
 
 ## v8.1.21
 - Add `id` _ZOD_ metadata for schemas.

@@ -84,12 +84,20 @@ export declare const CreatePublishRequestSchema: z.ZodObject<{
     reference_id: z.ZodString;
     recipe_template: z.ZodObject<{
         events: z.ZodArray<z.ZodObject<{
-            event_id: z.ZodUUID;
             priority: z.ZodNumber;
             start: z.ZodISODateTime;
             timeZone: z.ZodString;
             duration: z.ZodString;
-            playlist_id: z.ZodUUID;
+            playlist: z.ZodObject<{
+                name: z.ZodString;
+                tags: z.ZodArray<z.ZodString>;
+                media_templates: z.ZodArray<z.ZodObject<{
+                    asset_id: z.ZodUUID;
+                    version: z.ZodNumber;
+                    params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
+                    duration_seconds: z.ZodNumber;
+                }, z.core.$strip>>;
+            }, z.core.$strip>;
             recurrenceRules: z.ZodOptional<z.ZodArray<z.ZodObject<{
                 frequency: z.ZodEnum<{
                     secondly: "secondly";
@@ -141,12 +149,20 @@ export declare const ListPublishResponseSchema: z.ZodObject<{
         reference_id: z.ZodString;
         recipe_template: z.ZodObject<{
             events: z.ZodArray<z.ZodObject<{
-                event_id: z.ZodUUID;
                 priority: z.ZodNumber;
                 start: z.ZodISODateTime;
                 timeZone: z.ZodString;
                 duration: z.ZodString;
-                playlist_id: z.ZodUUID;
+                playlist: z.ZodObject<{
+                    name: z.ZodString;
+                    tags: z.ZodArray<z.ZodString>;
+                    media_templates: z.ZodArray<z.ZodObject<{
+                        asset_id: z.ZodUUID;
+                        version: z.ZodNumber;
+                        params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
+                        duration_seconds: z.ZodNumber;
+                    }, z.core.$strip>>;
+                }, z.core.$strip>;
                 recurrenceRules: z.ZodOptional<z.ZodArray<z.ZodObject<{
                     frequency: z.ZodEnum<{
                         secondly: "secondly";
@@ -267,12 +283,20 @@ export declare const PublisherRequestSchema: z.ZodUnion<readonly [z.ZodObject<{}
     reference_id: z.ZodString;
     recipe_template: z.ZodObject<{
         events: z.ZodArray<z.ZodObject<{
-            event_id: z.ZodUUID;
             priority: z.ZodNumber;
             start: z.ZodISODateTime;
             timeZone: z.ZodString;
             duration: z.ZodString;
-            playlist_id: z.ZodUUID;
+            playlist: z.ZodObject<{
+                name: z.ZodString;
+                tags: z.ZodArray<z.ZodString>;
+                media_templates: z.ZodArray<z.ZodObject<{
+                    asset_id: z.ZodUUID;
+                    version: z.ZodNumber;
+                    params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
+                    duration_seconds: z.ZodNumber;
+                }, z.core.$strip>>;
+            }, z.core.$strip>;
             recurrenceRules: z.ZodOptional<z.ZodArray<z.ZodObject<{
                 frequency: z.ZodEnum<{
                     secondly: "secondly";
@@ -362,12 +386,20 @@ export declare const PublisherResponseSchema: z.ZodUnion<readonly [z.ZodObject<{
         reference_id: z.ZodString;
         recipe_template: z.ZodObject<{
             events: z.ZodArray<z.ZodObject<{
-                event_id: z.ZodUUID;
                 priority: z.ZodNumber;
                 start: z.ZodISODateTime;
                 timeZone: z.ZodString;
                 duration: z.ZodString;
-                playlist_id: z.ZodUUID;
+                playlist: z.ZodObject<{
+                    name: z.ZodString;
+                    tags: z.ZodArray<z.ZodString>;
+                    media_templates: z.ZodArray<z.ZodObject<{
+                        asset_id: z.ZodUUID;
+                        version: z.ZodNumber;
+                        params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
+                        duration_seconds: z.ZodNumber;
+                    }, z.core.$strip>>;
+                }, z.core.$strip>;
                 recurrenceRules: z.ZodOptional<z.ZodArray<z.ZodObject<{
                     frequency: z.ZodEnum<{
                         secondly: "secondly";

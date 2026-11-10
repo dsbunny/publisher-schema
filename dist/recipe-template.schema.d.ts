@@ -1,5 +1,23 @@
 import * as z from 'zod';
 export declare namespace RecipeTemplateSchema {
+    const MediaTemplateSchema: z.ZodObject<{
+        asset_id: z.ZodUUID;
+        version: z.ZodNumber;
+        params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
+        duration_seconds: z.ZodNumber;
+    }, z.core.$strip>;
+    type MediaTemplate = z.infer<typeof MediaTemplateSchema>;
+    const PlaylistTemplateSchema: z.ZodObject<{
+        name: z.ZodString;
+        tags: z.ZodArray<z.ZodString>;
+        media_templates: z.ZodArray<z.ZodObject<{
+            asset_id: z.ZodUUID;
+            version: z.ZodNumber;
+            params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
+            duration_seconds: z.ZodNumber;
+        }, z.core.$strip>>;
+    }, z.core.$strip>;
+    type PlaylistTemplate = z.infer<typeof PlaylistTemplateSchema>;
     const NDaySchema: z.ZodObject<{
         day: z.ZodEnum<{
             mo: "mo";
@@ -44,12 +62,20 @@ export declare namespace RecipeTemplateSchema {
     }, z.core.$strip>;
     type RecurrenceRuleTemplate = z.infer<typeof RecurrenceRuleTemplateSchema>;
     const EventTemplateSchema: z.ZodObject<{
-        event_id: z.ZodUUID;
         priority: z.ZodNumber;
         start: z.ZodISODateTime;
         timeZone: z.ZodString;
         duration: z.ZodString;
-        playlist_id: z.ZodUUID;
+        playlist: z.ZodObject<{
+            name: z.ZodString;
+            tags: z.ZodArray<z.ZodString>;
+            media_templates: z.ZodArray<z.ZodObject<{
+                asset_id: z.ZodUUID;
+                version: z.ZodNumber;
+                params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
+                duration_seconds: z.ZodNumber;
+            }, z.core.$strip>>;
+        }, z.core.$strip>;
         recurrenceRules: z.ZodOptional<z.ZodArray<z.ZodObject<{
             frequency: z.ZodEnum<{
                 secondly: "secondly";
@@ -83,12 +109,20 @@ export declare namespace RecipeTemplateSchema {
     type EventTemplate = z.infer<typeof EventTemplateSchema>;
     const RecipeTemplateSchema: z.ZodObject<{
         events: z.ZodArray<z.ZodObject<{
-            event_id: z.ZodUUID;
             priority: z.ZodNumber;
             start: z.ZodISODateTime;
             timeZone: z.ZodString;
             duration: z.ZodString;
-            playlist_id: z.ZodUUID;
+            playlist: z.ZodObject<{
+                name: z.ZodString;
+                tags: z.ZodArray<z.ZodString>;
+                media_templates: z.ZodArray<z.ZodObject<{
+                    asset_id: z.ZodUUID;
+                    version: z.ZodNumber;
+                    params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
+                    duration_seconds: z.ZodNumber;
+                }, z.core.$strip>>;
+            }, z.core.$strip>;
             recurrenceRules: z.ZodOptional<z.ZodArray<z.ZodObject<{
                 frequency: z.ZodEnum<{
                     secondly: "secondly";

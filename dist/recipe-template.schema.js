@@ -1,8 +1,35 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 import * as z from 'zod';
+import { BaseParamsSchema } from "@dsbunny/recipe-schema";
 import { dsbunnyRegistry } from '@dsbunny/zod-registry';
 export var RecipeTemplateSchema;
 (function (RecipeTemplateSchema_1) {
+    RecipeTemplateSchema_1.MediaTemplateSchema = z.object({
+        asset_id: z.uuid()
+            .describe('Asset ID'),
+        version: z.number().min(1)
+            .describe('The version number of the asset'),
+        params: BaseParamsSchema.optional()
+            .describe('Runtime parameters for the asset'),
+        // WARNING: 86400 seconds is the maximum duration of a media template
+        duration_seconds: z.number().min(1).max(86400)
+            .describe('Duration of the asset in seconds'),
+    }).register(dsbunnyRegistry, {
+        id: 'MediaTemplateSchema',
+        description: 'Media template schema.',
+    });
+    RecipeTemplateSchema_1.PlaylistTemplateSchema = z.object({
+        name: z.string().min(1).max(100)
+            .describe('The name of the playlist'),
+        tags: z.array(z.string().max(64))
+            .describe('The tags of the playlist'),
+        // WARNING: 1000 media templates is the maximum number of media templates that can be assigned to a playlist template
+        media_templates: z.array(RecipeTemplateSchema_1.MediaTemplateSchema).min(1).max(1000)
+            .describe('Array of media templates'),
+    }).register(dsbunnyRegistry, {
+        id: 'PlaylistTemplateSchema',
+        description: 'Playlist template schema.',
+    });
     // e.g. MO for Monday, 2MO for the second Monday of the month.
     RecipeTemplateSchema_1.NDaySchema = z.object({
         day: z.enum(['mo', 'tu', 'we', 'th', 'fr', 'sa', 'su'])
@@ -43,8 +70,6 @@ export var RecipeTemplateSchema;
         description: 'Recurrence rule template schema.',
     });
     RecipeTemplateSchema_1.EventTemplateSchema = z.object({
-        event_id: z.uuid()
-            .describe('Event ID, when IDs match all items excluding name and tags must be the same'),
         priority: z.number().int().min(0).max(10)
             .describe('Priority of the event'),
         start: z.iso.datetime()
@@ -53,8 +78,7 @@ export var RecipeTemplateSchema;
             .describe('Time zone of the event'),
         duration: z.string()
             .describe('Duration of the event'),
-        playlist_id: z.uuid()
-            .describe('Playlist ID'),
+        playlist: RecipeTemplateSchema_1.PlaylistTemplateSchema,
         recurrenceRules: z.array(RecipeTemplateSchema_1.RecurrenceRuleTemplateSchema).optional()
             .describe('Array of recurrence rule templates'),
     }).register(dsbunnyRegistry, {
