@@ -4,7 +4,7 @@ import { dsbunnyRegistry } from '@dsbunny/zod-registry';
 import { RobustTask } from "@dsbunny/robust-task-schema";
 import { PublishRecipeDetailSchema } from "./output.schema.js";
 import { PublishProgressSchema } from "./progress.schema.js";
-import { RecipeTemplateSchema } from './recipe-template.schema.js';
+import { RecipeTemplateSchema } from '@dsbunny/recipedb-schema';
 import { PublishResponseSchema } from "./response.schema.js";
 export const PublishTaskStateSchema = RobustTask.TaskStateSchema.extend({
     progress: PublishProgressSchema.optional(),
@@ -14,6 +14,8 @@ export const PublishTaskStateSchema = RobustTask.TaskStateSchema.extend({
     description: 'Publish task state schema.',
 });
 export const PublishSchema = z.object({
+    '@type': z.literal('Publish')
+        .describe('Type of the publish job object'),
     publish_id: z.uuid()
         .describe('Unique identifier for the publish job'),
     tenant_id: z.uuid()

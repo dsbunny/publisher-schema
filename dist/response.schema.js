@@ -2,6 +2,8 @@
 import * as z from 'zod';
 import { dsbunnyRegistry } from '@dsbunny/zod-registry';
 export const PublishResponseSchema = z.object({
+    '@type': z.literal('PublishResponse')
+        .describe('Type of the publish response'),
     publish_id: z.uuid()
         .describe('Unique identifier for this publish, can be used to query the status of the publish.'),
     reference_id: z.string().max(255)

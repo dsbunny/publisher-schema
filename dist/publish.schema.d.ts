@@ -4,6 +4,7 @@ import { PublishProgress } from "./progress.schema.js";
 import { PublishResponse } from "./response.schema.js";
 import { PublishRequest } from "./request.schema.js";
 export declare const PublishTaskStateSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"TaskState">;
     status: z.ZodEnum<{
         pending: "pending";
         running: "running";
@@ -25,22 +26,26 @@ export declare const PublishTaskStateSchema: z.ZodObject<{
     runtimeToken: z.ZodOptional<z.ZodString>;
     data: z.ZodOptional<z.ZodUnknown>;
     config: z.ZodOptional<z.ZodObject<{
+        "@type": z.ZodLiteral<"TaskConfig">;
         timeoutMs: z.ZodNumber;
         maxAttempts: z.ZodNumber;
     }, z.core.$strip>>;
     error: z.ZodOptional<z.ZodObject<{
+        "@type": z.ZodLiteral<"ErrorInfo">;
         message: z.ZodString;
         code: z.ZodOptional<z.ZodString>;
         stack: z.ZodOptional<z.ZodString>;
         timestamp: z.ZodISODateTime;
     }, z.core.$strip>>;
     rejection: z.ZodOptional<z.ZodObject<{
+        "@type": z.ZodLiteral<"RejectionInfo">;
         reason: z.ZodString;
         issues: z.ZodOptional<z.ZodArray<z.ZodString>>;
         timestamp: z.ZodISODateTime;
     }, z.core.$strip>>;
     progress: z.ZodOptional<z.ZodNumber>;
     result: z.ZodOptional<z.ZodObject<{
+        '@type': z.ZodLiteral<"PublishResponse">;
         publish_id: z.ZodUUID;
         reference_id: z.ZodString;
         timestamp: z.ZodISODateTime;
@@ -51,19 +56,24 @@ export type PublishTaskState = RobustTask.TaskState<PublishRequest, RobustTask.T
     result?: PublishResponse;
 };
 export declare const PublishSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"Publish">;
     publish_id: z.ZodUUID;
     tenant_id: z.ZodUUID;
     reference_id: z.ZodString;
     recipe_template: z.ZodObject<{
-        events: z.ZodArray<z.ZodObject<{
+        '@type': z.ZodLiteral<"RecipeTemplate">;
+        scheduled_playlists: z.ZodArray<z.ZodObject<{
+            "@type": z.ZodLiteral<"ScheduledPlaylistTemplate">;
             priority: z.ZodNumber;
             start: z.ZodISODateTime;
             timeZone: z.ZodString;
             duration: z.ZodString;
             playlist: z.ZodObject<{
+                "@type": z.ZodLiteral<"PlaylistTemplate">;
                 name: z.ZodString;
                 tags: z.ZodArray<z.ZodString>;
                 media_templates: z.ZodArray<z.ZodObject<{
+                    "@type": z.ZodLiteral<"MediaTemplate">;
                     asset_id: z.ZodUUID;
                     version: z.ZodNumber;
                     params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
@@ -71,6 +81,7 @@ export declare const PublishSchema: z.ZodObject<{
                 }, z.core.$strip>>;
             }, z.core.$strip>;
             recurrenceRules: z.ZodOptional<z.ZodArray<z.ZodObject<{
+                "@type": z.ZodLiteral<"RecurrenceRuleTemplate">;
                 frequency: z.ZodEnum<{
                     secondly: "secondly";
                     minutely: "minutely";
@@ -82,6 +93,7 @@ export declare const PublishSchema: z.ZodObject<{
                 }>;
                 interval: z.ZodOptional<z.ZodNumber>;
                 byDay: z.ZodOptional<z.ZodArray<z.ZodObject<{
+                    "@type": z.ZodLiteral<"NDay">;
                     day: z.ZodEnum<{
                         mo: "mo";
                         tu: "tu";
@@ -104,6 +116,7 @@ export declare const PublishSchema: z.ZodObject<{
     canvas_ids: z.ZodArray<z.ZodUUID>;
     identity: z.ZodString;
     recipe_details: z.ZodArray<z.ZodObject<{
+        '@type': z.ZodLiteral<"PublishRecipeDetail">;
         recipe_link: z.ZodObject<{
             "@type": z.ZodLiteral<"RecipeLink">;
             recipe_id: z.ZodUUID;
@@ -123,6 +136,7 @@ export declare const PublishSchema: z.ZodObject<{
         viewport_id: z.ZodString;
     }, z.core.$strip>>;
     task_publish_state: z.ZodObject<{
+        '@type': z.ZodLiteral<"TaskState">;
         status: z.ZodEnum<{
             pending: "pending";
             running: "running";
@@ -144,22 +158,26 @@ export declare const PublishSchema: z.ZodObject<{
         runtimeToken: z.ZodOptional<z.ZodString>;
         data: z.ZodOptional<z.ZodUnknown>;
         config: z.ZodOptional<z.ZodObject<{
+            "@type": z.ZodLiteral<"TaskConfig">;
             timeoutMs: z.ZodNumber;
             maxAttempts: z.ZodNumber;
         }, z.core.$strip>>;
         error: z.ZodOptional<z.ZodObject<{
+            "@type": z.ZodLiteral<"ErrorInfo">;
             message: z.ZodString;
             code: z.ZodOptional<z.ZodString>;
             stack: z.ZodOptional<z.ZodString>;
             timestamp: z.ZodISODateTime;
         }, z.core.$strip>>;
         rejection: z.ZodOptional<z.ZodObject<{
+            "@type": z.ZodLiteral<"RejectionInfo">;
             reason: z.ZodString;
             issues: z.ZodOptional<z.ZodArray<z.ZodString>>;
             timestamp: z.ZodISODateTime;
         }, z.core.$strip>>;
         progress: z.ZodOptional<z.ZodNumber>;
         result: z.ZodOptional<z.ZodObject<{
+            '@type': z.ZodLiteral<"PublishResponse">;
             publish_id: z.ZodUUID;
             reference_id: z.ZodString;
             timestamp: z.ZodISODateTime;

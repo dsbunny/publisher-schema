@@ -3,6 +3,8 @@ import * as z from 'zod';
 import { dsbunnyRegistry } from '@dsbunny/zod-registry';
 import { RecipeSchema } from "@dsbunny/recipe-schema";
 export const PublishRecipeDetailSchema = z.object({
+    '@type': z.literal('PublishRecipeDetail')
+        .describe('Type of the publish recipe detail'),
     recipe_link: RecipeSchema.RecipeLinkSchema,
     canvas_id: z.uuid()
         .describe('Canvas ID associated with the recipe'),
@@ -13,6 +15,8 @@ export const PublishRecipeDetailSchema = z.object({
     description: 'Publish Recipe Detail schema.',
 });
 export const PublishOutputSchema = z.object({
+    '@type': z.literal('PublishOutput')
+        .describe('Type of the publish output'),
     publish_id: z.uuid()
         .describe('Unique identifier for the publish operation'),
     report: z.array(z.string()),

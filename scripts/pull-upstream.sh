@@ -7,6 +7,7 @@ set -e
 UPSTREAM_REPO_PATH="../melanie/packages/publisher-schema"
 ERROR_SCHEMA_COMMIT=$(cd ../error-schema && git rev-parse --short HEAD)
 RECIPE_SCHEMA_COMMIT=$(cd ../recipe-schema && git rev-parse --short HEAD)
+RECIPEDB_SCHEMA_COMMIT=$(cd ../recipedb-schema && git rev-parse --short HEAD)
 TASK_SCHEMA_COMMIT=$(cd ../robust-task-schema && git rev-parse --short HEAD)
 WEBHOOK_SCHEMA_COMMIT=$(cd ../webhook-schema && git rev-parse --short HEAD)
 ZOD_REGISTRY_COMMIT=$(cd ../zod-registry && git rev-parse --short HEAD)
@@ -24,17 +25,20 @@ jq \
 	--tab \
 	--arg error_commit "$ERROR_SCHEMA_COMMIT" \
 	--arg recipe_commit "$RECIPE_SCHEMA_COMMIT" \
+	--arg recipedb_commit "$RECIPEDB_SCHEMA_COMMIT" \
 	--arg task_commit "$TASK_SCHEMA_COMMIT" \
 	--arg webhook_commit "$WEBHOOK_SCHEMA_COMMIT" \
 	--arg registry_commit "$ZOD_REGISTRY_COMMIT" \
 	'
 	.peerDependencies["@dsbunny/error-schema"]		= "github:dsbunny/error-schema"					|
 	.peerDependencies["@dsbunny/recipe-schema"]		= "github:dsbunny/recipe-schema"				|
+	.peerDependencies["@dsbunny/recipedb-schema"]		= "github:dsbunny/recipedb-schema"				|
 	.peerDependencies["@dsbunny/robust-task-schema"]	= "github:dsbunny/robust-task-schema"				|
 	.peerDependencies["@dsbunny/webhook-schema"]		= "github:dsbunny/webhook-schema"				|
 	.peerDependencies["@dsbunny/zod-registry"]		= "github:dsbunny/zod-registry"					|
 	.devDependencies["@dsbunny/error-schema"]		= ("github:dsbunny/error-schema#" + $error_commit)		|
 	.devDependencies["@dsbunny/recipe-schema"]		= ("github:dsbunny/recipe-schema#" + $recipe_commit)		|
+	.devDependencies["@dsbunny/recipedb-schema"]		= ("github:dsbunny/recipedb-schema#" + $recipedb_commit)	|
 	.devDependencies["@dsbunny/robust-task-schema"]		= ("github:dsbunny/robust-task-schema#" + $task_commit)		|
 	.devDependencies["@dsbunny/webhook-schema"]		= ("github:dsbunny/webhook-schema#" + $webhook_commit)		|
 	.devDependencies["@dsbunny/zod-registry"]		= ("github:dsbunny/zod-registry#" + $registry_commit)

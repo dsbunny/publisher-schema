@@ -13,6 +13,7 @@ export declare const PublisherWebhookRequestSchema: z.ZodObject<{
     tenant_id: z.ZodUUID;
     ref_id: z.ZodUUID;
     trace_id: z.ZodOptional<z.ZodString>;
+    '@type': z.ZodLiteral<"PublisherWebhookRequest">;
     class: z.ZodEnum<{
         recipe: "recipe";
     }>;
@@ -23,7 +24,11 @@ export declare const PublisherWebhookRequestSchema: z.ZodObject<{
     }>;
 }, z.core.$strip>;
 export type PublisherWebhookRequest = z.infer<typeof PublisherWebhookRequestSchema>;
-export declare const PublisherWebhookProgressSchema: z.ZodNull;
+export declare const PublisherWebhookProgressSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"PublisherWebhookProgress">;
+}, z.core.$strip>;
 export type PublisherWebhookProgress = z.infer<typeof PublisherWebhookProgressSchema>;
-export declare const PublisherWebhookResponseSchema: z.ZodObject<{}, z.core.$strip>;
+export declare const PublisherWebhookResponseSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"PublisherWebhookResponse">;
+}, z.core.$strip>;
 export type PublisherWebhookResponse = z.infer<typeof PublisherWebhookResponseSchema>;

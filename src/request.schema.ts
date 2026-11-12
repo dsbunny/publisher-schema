@@ -2,9 +2,11 @@
 
 import * as z from 'zod';
 import { dsbunnyRegistry } from '@dsbunny/zod-registry';
-import { RecipeTemplateSchema } from './recipe-template.schema.js';
+import { RecipeTemplateSchema } from '@dsbunny/recipedb-schema';
 
 export const PublishRequestSchema = z.object({
+	'@type': z.literal('PublishRequest')
+		.describe('Type of the publish request'),
 	tenant_id: z.uuid()
 		.describe('Tenant ID'),
 	reference_id: z.string().max(255)

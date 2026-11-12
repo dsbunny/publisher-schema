@@ -8,12 +8,17 @@ import { PublishResponseSchema } from './response.schema.js';
 import { PublishSchema } from "./publish.schema.js";
 
 // #region Publisher
-export const CreateUUIDsRequestSchema = z.object({}).register(dsbunnyRegistry, {
+export const CreateUUIDsRequestSchema = z.object({
+	'@type': z.literal('CreateUUIDsRequest')
+		.describe('Type of the create UUIDs request object'),
+}).optional().register(dsbunnyRegistry, {
 	id: 'CreateUUIDsRequestSchema',
 	description: 'Create UUIDs request schema.',
 });
 export type CreateUUIDsRequest = z.infer<typeof CreateUUIDsRequestSchema>;
 export const CreateUUIDsResponseSchema = z.object({
+	'@type': z.literal('CreateUUIDsResponse')
+		.describe('Type of the create UUIDs response object'),
 	uuids: z.array(z.string()),
 }).register(dsbunnyRegistry, {
 	id: 'CreateUUIDsResponseSchema',
@@ -21,13 +26,18 @@ export const CreateUUIDsResponseSchema = z.object({
 });
 export type CreateUUIDsResponse = z.infer<typeof CreateUUIDsResponseSchema>;
 
-export const GetPublishStatusRequestSchema = z.object({}).register(dsbunnyRegistry, {
+export const GetPublishStatusRequestSchema = z.object({
+	'@type': z.literal('GetPublishStatusRequest')
+		.describe('Type of the get publish status request object'),
+}).optional().register(dsbunnyRegistry, {
 	id: 'GetPublishStatusRequestSchema',
 	description: 'Get Publish Status request schema.',
 });
 export type GetPublishStatusRequest = z.infer<typeof GetPublishStatusRequestSchema>;
 
 export const GetPublishStatusErrorResponseSchema = z.object({
+	'@type': z.literal('GetPublishStatusErrorResponse')
+		.describe('Type of the get publish status error response object'),
 	publish_id: z.string(),
 	error: z.string()
 		.describe('Error message if the publish could not be queried.'),
@@ -38,6 +48,8 @@ export const GetPublishStatusErrorResponseSchema = z.object({
 export type GetPublishStatusErrorResponse = z.infer<typeof GetPublishStatusErrorResponseSchema>;
 
 export const GetPublishStatusFailedResponseSchema = z.object({
+	'@type': z.literal('GetPublishStatusFailedResponse')
+		.describe('Type of the get publish status failed response object'),
 	publish_id: z.string(),
 	status: z.literal("failed"),
 	error_code: z.string()
@@ -51,6 +63,8 @@ export const GetPublishStatusFailedResponseSchema = z.object({
 export type GetPublishStatusFailedResponse = z.infer<typeof GetPublishStatusFailedResponseSchema>;
 
 export const GetPublishStatusSucceededResponseSchema = z.object({
+	'@type': z.literal('GetPublishStatusSucceededResponse')
+		.describe('Type of the get publish status succeeded response object'),
 	publish_id: z.string(),
 	status: z.literal("succeeded"),
 	progress: z.literal(100),
@@ -61,6 +75,8 @@ export const GetPublishStatusSucceededResponseSchema = z.object({
 export type GetPublishStatusSucceededResponse = z.infer<typeof GetPublishStatusSucceededResponseSchema>;
 
 export const GetPublishStatusRejectedResponseSchema = z.object({
+	'@type': z.literal('GetPublishStatusRejectedResponse')
+		.describe('Type of the get publish status rejected response object'),
 	publish_id: z.string(),
 	status: z.literal("rejected"),
 	reason: z.string()
@@ -72,6 +88,8 @@ export const GetPublishStatusRejectedResponseSchema = z.object({
 export type GetPublishStatusRejectedResponse = z.infer<typeof GetPublishStatusRejectedResponseSchema>;
 
 export const GetPublishStatusCreatedResponseSchema = z.object({
+	'@type': z.literal('GetPublishStatusCreatedResponse')
+		.describe('Type of the get publish status created response object'),
 	publish_id: z.string(),
 	status: z.literal("created"),
 	progress: z.number().lt(100).gte(0)
@@ -100,23 +118,37 @@ export const GetPublishStatusResponseSchema = z.union([
 });
 export type GetPublishStatusResponse = z.infer<typeof GetPublishStatusResponseSchema>;
 
-export const CreatePublishRequestSchema = PublishRequestSchema.register(dsbunnyRegistry, {
+export const CreatePublishRequestSchema = z.object({
+	'@type': z.literal('CreatePublishRequest')
+		.describe('Type of the create publish request object'),
+	publish_request: PublishRequestSchema
+		.describe('The publish request object.'),
+}).register(dsbunnyRegistry, {
 	id: 'CreatePublishRequestSchema',
 	description: 'Create Publish request schema.',
 });
 export type CreatePublishRequest = z.infer<typeof CreatePublishRequestSchema>;
-export const CreatePublishResponseSchema = PublishResponseSchema.register(dsbunnyRegistry, {
+export const CreatePublishResponseSchema = z.object({
+	'@type': z.literal('CreatePublishResponse')
+		.describe('Type of the create publish response object'),
+	...PublishResponseSchema.omit({ '@type': true }).shape,
+}).register(dsbunnyRegistry, {
 	id: 'CreatePublishResponseSchema',
 	description: 'Create Publish response schema.',
 });
 export type CreatePublishResponse = z.infer<typeof CreatePublishResponseSchema>;
 
-export const ListPublishRequestSchema = z.object({}).register(dsbunnyRegistry, {
+export const ListPublishRequestSchema = z.object({
+	'@type': z.literal('ListPublishRequest')
+		.describe('Type of the list publish request object'),
+}).optional().register(dsbunnyRegistry, {
 	id: 'ListPublishRequestSchema',
 	description: 'List Publish request schema.',
 });
 export type ListPublishRequest = z.infer<typeof ListPublishRequestSchema>;
 export const ListPublishResponseSchema = z.object({
+	'@type': z.literal('ListPublishResponse')
+		.describe('Type of the list publish response object'),
 	publishes: z.array(PublishSchema)
 		.describe('List of publishes.'),
 	next_token: z.string().nullable()

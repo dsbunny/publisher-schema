@@ -11,17 +11,25 @@ export const PublisherWebhookTypeSchema = z.enum(['new', 'change', 'delete']).re
     description: 'The type of the webhook event related to publish operations',
 });
 export const PublisherWebhookRequestSchema = WebhookRequestSchema.extend({
+    '@type': z.literal('PublisherWebhookRequest')
+        .describe('Type of the publisher webhook request object'),
     class: PublisherWebhookClassSchema,
     type: PublisherWebhookTypeSchema,
 }).register(dsbunnyRegistry, {
     id: 'PublisherWebhookRequestSchema',
     description: 'The schema for webhook requests sent by the publisher',
 });
-export const PublisherWebhookProgressSchema = WebhookProgressSchema.register(dsbunnyRegistry, {
+export const PublisherWebhookProgressSchema = WebhookProgressSchema.extend({
+    '@type': z.literal('PublisherWebhookProgress')
+        .describe('Type of the publisher webhook progress object'),
+}).register(dsbunnyRegistry, {
     id: 'PublisherWebhookProgressSchema',
     description: 'The schema for webhook progress sent by the publisher',
 });
-export const PublisherWebhookResponseSchema = WebhookResponseSchema.register(dsbunnyRegistry, {
+export const PublisherWebhookResponseSchema = WebhookResponseSchema.extend({
+    '@type': z.literal('PublisherWebhookResponse')
+        .describe('Type of the publisher webhook response object'),
+}).register(dsbunnyRegistry, {
     id: 'PublisherWebhookResponseSchema',
     description: 'The schema for webhook responses sent by the publisher',
 });

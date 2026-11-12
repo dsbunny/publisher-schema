@@ -1,17 +1,22 @@
 import * as z from 'zod';
 export declare const PublishRequestSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"PublishRequest">;
     tenant_id: z.ZodUUID;
     reference_id: z.ZodString;
     recipe_template: z.ZodObject<{
-        events: z.ZodArray<z.ZodObject<{
+        '@type': z.ZodLiteral<"RecipeTemplate">;
+        scheduled_playlists: z.ZodArray<z.ZodObject<{
+            "@type": z.ZodLiteral<"ScheduledPlaylistTemplate">;
             priority: z.ZodNumber;
             start: z.ZodISODateTime;
             timeZone: z.ZodString;
             duration: z.ZodString;
             playlist: z.ZodObject<{
+                "@type": z.ZodLiteral<"PlaylistTemplate">;
                 name: z.ZodString;
                 tags: z.ZodArray<z.ZodString>;
                 media_templates: z.ZodArray<z.ZodObject<{
+                    "@type": z.ZodLiteral<"MediaTemplate">;
                     asset_id: z.ZodUUID;
                     version: z.ZodNumber;
                     params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
@@ -19,6 +24,7 @@ export declare const PublishRequestSchema: z.ZodObject<{
                 }, z.core.$strip>>;
             }, z.core.$strip>;
             recurrenceRules: z.ZodOptional<z.ZodArray<z.ZodObject<{
+                "@type": z.ZodLiteral<"RecurrenceRuleTemplate">;
                 frequency: z.ZodEnum<{
                     secondly: "secondly";
                     minutely: "minutely";
@@ -30,6 +36,7 @@ export declare const PublishRequestSchema: z.ZodObject<{
                 }>;
                 interval: z.ZodOptional<z.ZodNumber>;
                 byDay: z.ZodOptional<z.ZodArray<z.ZodObject<{
+                    "@type": z.ZodLiteral<"NDay">;
                     day: z.ZodEnum<{
                         mo: "mo";
                         tu: "tu";
