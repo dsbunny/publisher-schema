@@ -1,4 +1,5 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
+// `@type` field is optional for requests with no other required fields.
 import * as z from 'zod';
 import { dsbunnyRegistry } from '@dsbunny/zod-registry';
 import { ErrorResponseSchema } from "@dsbunny/error-schema";
@@ -108,10 +109,9 @@ export const CreatePublishRequestSchema = z.object({
     id: 'CreatePublishRequestSchema',
     description: 'Create Publish request schema.',
 });
-export const CreatePublishResponseSchema = z.object({
+export const CreatePublishResponseSchema = PublishResponseSchema.extend({
     '@type': z.literal('CreatePublishResponse')
         .describe('Type of the create publish response object'),
-    ...PublishResponseSchema.omit({ '@type': true }).shape,
 }).register(dsbunnyRegistry, {
     id: 'CreatePublishResponseSchema',
     description: 'Create Publish response schema.',

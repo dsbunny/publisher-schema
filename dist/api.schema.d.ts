@@ -165,8 +165,8 @@ export declare const CreatePublishRequestSchema: z.ZodObject<{
 }, z.core.$strip>;
 export type CreatePublishRequest = z.infer<typeof CreatePublishRequestSchema>;
 export declare const CreatePublishResponseSchema: z.ZodObject<{
-    reference_id: z.ZodString;
     publish_id: z.ZodUUID;
+    reference_id: z.ZodString;
     timestamp: z.ZodISODateTime;
     '@type': z.ZodLiteral<"CreatePublishResponse">;
 }, z.core.$strip>;
@@ -450,8 +450,8 @@ export declare const PublisherResponseSchema: z.ZodUnion<readonly [z.ZodObject<{
     status: z.ZodLiteral<"created">;
     progress: z.ZodNumber;
 }, z.core.$strip>]>>]>, z.ZodObject<{
-    reference_id: z.ZodString;
     publish_id: z.ZodUUID;
+    reference_id: z.ZodString;
     timestamp: z.ZodISODateTime;
     '@type': z.ZodLiteral<"CreatePublishResponse">;
 }, z.core.$strip>, z.ZodObject<{

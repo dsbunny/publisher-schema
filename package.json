@@ -24,7 +24,7 @@
 	"devDependencies": {
 		"@dsbunny/error-schema": "github:dsbunny/error-schema#ee6c4fe",
 		"@dsbunny/recipe-schema": "github:dsbunny/recipe-schema#f276204",
-		"@dsbunny/recipedb-schema": "github:dsbunny/recipedb-schema#691a45b",
+		"@dsbunny/recipedb-schema": "github:dsbunny/recipedb-schema#19a3564",
 		"@dsbunny/robust-task-schema": "github:dsbunny/robust-task-schema#06596e4",
 		"@dsbunny/webhook-schema": "github:dsbunny/webhook-schema#cbda3b5",
 		"@dsbunny/zod-registry": "github:dsbunny/zod-registry#35c7ef6",
