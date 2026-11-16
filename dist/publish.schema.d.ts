@@ -201,3 +201,4 @@ export declare const PublishSchema: z.ZodObject<{
     is_deleted: z.ZodDefault<z.ZodBoolean>;
 }, z.core.$strip>;
 export type Publish = z.infer<typeof PublishSchema>;
+//# sourceMappingURL=publish.schema.d.ts.map

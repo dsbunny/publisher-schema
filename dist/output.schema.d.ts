@@ -46,3 +46,4 @@ export declare const PublishOutputSchema: z.ZodObject<{
     }, z.core.$strip>>;
 }, z.core.$strip>;
 export type PublishOutput = z.infer<typeof PublishOutputSchema>;
+//# sourceMappingURL=output.schema.d.ts.map

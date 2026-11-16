@@ -61,3 +61,4 @@ export declare const PublishRequestSchema: z.ZodObject<{
     client_request_token: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
 export type PublishRequest = z.infer<typeof PublishRequestSchema>;
+//# sourceMappingURL=request.schema.d.ts.map

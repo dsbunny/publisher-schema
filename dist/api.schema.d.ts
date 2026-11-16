@@ -610,3 +610,4 @@ export declare const PublisherResponseSchema: z.ZodUnion<readonly [z.ZodObject<{
     timestamp: z.ZodISODateTime;
 }, z.core.$strip>]>;
 export type PublisherResponse = z.infer<typeof PublisherResponseSchema>;
+//# sourceMappingURL=api.schema.d.ts.map

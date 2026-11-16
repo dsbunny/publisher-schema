@@ -6,3 +6,4 @@ export declare const PublishResponseSchema: z.ZodObject<{
     timestamp: z.ZodISODateTime;
 }, z.core.$strip>;
 export type PublishResponse = z.infer<typeof PublishResponseSchema>;
+//# sourceMappingURL=response.schema.d.ts.map

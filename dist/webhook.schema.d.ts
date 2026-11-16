@@ -32,3 +32,4 @@ export declare const PublisherWebhookResponseSchema: z.ZodObject<{
     '@type': z.ZodLiteral<"PublisherWebhookResponse">;
 }, z.core.$strip>;
 export type PublisherWebhookResponse = z.infer<typeof PublisherWebhookResponseSchema>;
+//# sourceMappingURL=webhook.schema.d.ts.map
