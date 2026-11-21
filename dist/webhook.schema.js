@@ -6,10 +6,15 @@ export const PublisherWebhookClassSchema = z.enum(['recipe']).register(dsbunnyRe
     id: 'PublisherWebhookClassSchema',
     description: 'Publisher webhook class schema.',
 });
+export const PublisherWebhookTypeSchema = z.enum(['new', 'change']).register(dsbunnyRegistry, {
+    id: 'PublisherWebhookTypeSchema',
+    description: 'The type of the webhook event related to publish operations',
+});
 export const PublisherWebhookRequestSchema = WebhookRequestSchema.extend({
     '@type': z.literal('PublisherWebhookRequest')
         .describe('Type of the publisher webhook request object'),
     class: PublisherWebhookClassSchema,
+    type: PublisherWebhookTypeSchema,
 }).register(dsbunnyRegistry, {
     id: 'PublisherWebhookRequestSchema',
     description: 'The schema for webhook requests sent by the publisher',
