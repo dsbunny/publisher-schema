@@ -3,12 +3,6 @@ export declare const PublisherWebhookClassSchema: z.ZodEnum<{
     recipe: "recipe";
 }>;
 export type PublisherWebhookClass = z.infer<typeof PublisherWebhookClassSchema>;
-export declare const PublisherWebhookTypeSchema: z.ZodEnum<{
-    new: "new";
-    change: "change";
-    delete: "delete";
-}>;
-export type PublisherWebhookType = z.infer<typeof PublisherWebhookTypeSchema>;
 export declare const PublisherWebhookRequestSchema: z.ZodObject<{
     tenant_id: z.ZodUUID;
     ref_id: z.ZodUUID;
@@ -16,11 +10,6 @@ export declare const PublisherWebhookRequestSchema: z.ZodObject<{
     '@type': z.ZodLiteral<"PublisherWebhookRequest">;
     class: z.ZodEnum<{
         recipe: "recipe";
-    }>;
-    type: z.ZodEnum<{
-        new: "new";
-        change: "change";
-        delete: "delete";
     }>;
 }, z.core.$strip>;
 export type PublisherWebhookRequest = z.infer<typeof PublisherWebhookRequestSchema>;
