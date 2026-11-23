@@ -2,6 +2,7 @@
 ## v10.0.23
 - Add `@type` fields to all schemas to enable discovery.
 - Remove `RecipeTemplateSchema` export; use `@dsbunny/recipedb-schema` instead.
+- Rename `*RequestSchema` to `*BodySchema` to add `*QuerySchema` and `*ParamsSchema`.
 
 ## v9.0.22
 - Drop `event_id` in template for server generation, alongside `playlist_id`.  Note that `event_id` only needs to be scoped to the previous _recipe_ to enable dynamic updating, whilst `playlist_id` needs scoped to the maximum cache size on a _player device_.

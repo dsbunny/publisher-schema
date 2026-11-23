@@ -99,6 +99,72 @@ export declare const GetPublishStatusResponseSchema: z.ZodUnion<[z.ZodUnion<read
     progress: z.ZodNumber;
 }, z.core.$strip>]>>]>;
 export type GetPublishStatusResponse = z.infer<typeof GetPublishStatusResponseSchema>;
+export declare const CreatePublishBodySchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"CreatePublishRequest">;
+    publish_request: z.ZodObject<{
+        '@type': z.ZodLiteral<"PublishRequest">;
+        tenant_id: z.ZodUUID;
+        reference_id: z.ZodString;
+        recipe_template: z.ZodObject<{
+            '@type': z.ZodLiteral<"RecipeTemplate">;
+            scheduled_playlists: z.ZodArray<z.ZodObject<{
+                "@type": z.ZodLiteral<"ScheduledPlaylistTemplate">;
+                priority: z.ZodNumber;
+                start: z.ZodISODateTime;
+                timeZone: z.ZodString;
+                duration: z.ZodString;
+                playlist: z.ZodObject<{
+                    "@type": z.ZodLiteral<"PlaylistTemplate">;
+                    name: z.ZodString;
+                    tags: z.ZodArray<z.ZodString>;
+                    media_templates: z.ZodArray<z.ZodObject<{
+                        "@type": z.ZodLiteral<"MediaTemplate">;
+                        asset_id: z.ZodUUID;
+                        version: z.ZodNumber;
+                        params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
+                        duration_seconds: z.ZodNumber;
+                    }, z.core.$strip>>;
+                }, z.core.$strip>;
+                recurrenceRules: z.ZodOptional<z.ZodArray<z.ZodObject<{
+                    "@type": z.ZodLiteral<"RecurrenceRuleTemplate">;
+                    frequency: z.ZodEnum<{
+                        secondly: "secondly";
+                        minutely: "minutely";
+                        hourly: "hourly";
+                        daily: "daily";
+                        weekly: "weekly";
+                        monthly: "monthly";
+                        yearly: "yearly";
+                    }>;
+                    interval: z.ZodOptional<z.ZodNumber>;
+                    byDay: z.ZodOptional<z.ZodArray<z.ZodObject<{
+                        "@type": z.ZodLiteral<"NDay">;
+                        day: z.ZodEnum<{
+                            mo: "mo";
+                            tu: "tu";
+                            we: "we";
+                            th: "th";
+                            fr: "fr";
+                            sa: "sa";
+                            su: "su";
+                        }>;
+                        nthOfPeriod: z.ZodOptional<z.ZodNumber>;
+                    }, z.core.$strip>>>;
+                    byMonthDay: z.ZodOptional<z.ZodArray<z.ZodNumber>>;
+                    byMonth: z.ZodOptional<z.ZodArray<z.ZodNumber>>;
+                    bySetPosition: z.ZodOptional<z.ZodArray<z.ZodNumber>>;
+                    times: z.ZodOptional<z.ZodNumber>;
+                    until: z.ZodOptional<z.ZodISODateTime>;
+                }, z.core.$strip>>>;
+            }, z.core.$strip>>;
+        }, z.core.$strip>;
+        canvas_ids: z.ZodArray<z.ZodUUID>;
+        identity: z.ZodString;
+        client_request_token: z.ZodOptional<z.ZodString>;
+    }, z.core.$strip>;
+}, z.core.$strip>;
+export type CreatePublishBody = z.infer<typeof CreatePublishBodySchema>;
+/** @deprecated Use CreatePublishBodySchema. */
 export declare const CreatePublishRequestSchema: z.ZodObject<{
     '@type': z.ZodLiteral<"CreatePublishRequest">;
     publish_request: z.ZodObject<{
@@ -163,7 +229,8 @@ export declare const CreatePublishRequestSchema: z.ZodObject<{
         client_request_token: z.ZodOptional<z.ZodString>;
     }, z.core.$strip>;
 }, z.core.$strip>;
-export type CreatePublishRequest = z.infer<typeof CreatePublishRequestSchema>;
+/** @deprecated Use CreatePublishBody. */
+export type CreatePublishRequest = CreatePublishBody;
 export declare const CreatePublishResponseSchema: z.ZodObject<{
     publish_id: z.ZodUUID;
     reference_id: z.ZodString;
@@ -171,6 +238,63 @@ export declare const CreatePublishResponseSchema: z.ZodObject<{
     '@type': z.ZodLiteral<"CreatePublishResponse">;
 }, z.core.$strip>;
 export type CreatePublishResponse = z.infer<typeof CreatePublishResponseSchema>;
+export declare const GetRecipeResponseSchema: z.ZodObject<{
+    '@type': z.ZodLiteral<"GetRecipeResponse">;
+    recipe: z.ZodObject<{
+        '@type': z.ZodLiteral<"RecipeTemplate">;
+        scheduled_playlists: z.ZodArray<z.ZodObject<{
+            "@type": z.ZodLiteral<"ScheduledPlaylistTemplate">;
+            priority: z.ZodNumber;
+            start: z.ZodISODateTime;
+            timeZone: z.ZodString;
+            duration: z.ZodString;
+            playlist: z.ZodObject<{
+                "@type": z.ZodLiteral<"PlaylistTemplate">;
+                name: z.ZodString;
+                tags: z.ZodArray<z.ZodString>;
+                media_templates: z.ZodArray<z.ZodObject<{
+                    "@type": z.ZodLiteral<"MediaTemplate">;
+                    asset_id: z.ZodUUID;
+                    version: z.ZodNumber;
+                    params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
+                    duration_seconds: z.ZodNumber;
+                }, z.core.$strip>>;
+            }, z.core.$strip>;
+            recurrenceRules: z.ZodOptional<z.ZodArray<z.ZodObject<{
+                "@type": z.ZodLiteral<"RecurrenceRuleTemplate">;
+                frequency: z.ZodEnum<{
+                    secondly: "secondly";
+                    minutely: "minutely";
+                    hourly: "hourly";
+                    daily: "daily";
+                    weekly: "weekly";
+                    monthly: "monthly";
+                    yearly: "yearly";
+                }>;
+                interval: z.ZodOptional<z.ZodNumber>;
+                byDay: z.ZodOptional<z.ZodArray<z.ZodObject<{
+                    "@type": z.ZodLiteral<"NDay">;
+                    day: z.ZodEnum<{
+                        mo: "mo";
+                        tu: "tu";
+                        we: "we";
+                        th: "th";
+                        fr: "fr";
+                        sa: "sa";
+                        su: "su";
+                    }>;
+                    nthOfPeriod: z.ZodOptional<z.ZodNumber>;
+                }, z.core.$strip>>>;
+                byMonthDay: z.ZodOptional<z.ZodArray<z.ZodNumber>>;
+                byMonth: z.ZodOptional<z.ZodArray<z.ZodNumber>>;
+                bySetPosition: z.ZodOptional<z.ZodArray<z.ZodNumber>>;
+                times: z.ZodOptional<z.ZodNumber>;
+                until: z.ZodOptional<z.ZodISODateTime>;
+            }, z.core.$strip>>>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>;
+}, z.core.$strip>;
+export type GetRecipeResponse = z.infer<typeof GetRecipeResponseSchema>;
 export declare const ListPublishRequestSchema: z.ZodOptional<z.ZodObject<{
     '@type': z.ZodLiteral<"ListPublishRequest">;
 }, z.core.$strip>>;
@@ -455,6 +579,61 @@ export declare const PublisherResponseSchema: z.ZodUnion<readonly [z.ZodObject<{
     timestamp: z.ZodISODateTime;
     '@type': z.ZodLiteral<"CreatePublishResponse">;
 }, z.core.$strip>, z.ZodObject<{
+    '@type': z.ZodLiteral<"GetRecipeResponse">;
+    recipe: z.ZodObject<{
+        '@type': z.ZodLiteral<"RecipeTemplate">;
+        scheduled_playlists: z.ZodArray<z.ZodObject<{
+            "@type": z.ZodLiteral<"ScheduledPlaylistTemplate">;
+            priority: z.ZodNumber;
+            start: z.ZodISODateTime;
+            timeZone: z.ZodString;
+            duration: z.ZodString;
+            playlist: z.ZodObject<{
+                "@type": z.ZodLiteral<"PlaylistTemplate">;
+                name: z.ZodString;
+                tags: z.ZodArray<z.ZodString>;
+                media_templates: z.ZodArray<z.ZodObject<{
+                    "@type": z.ZodLiteral<"MediaTemplate">;
+                    asset_id: z.ZodUUID;
+                    version: z.ZodNumber;
+                    params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
+                    duration_seconds: z.ZodNumber;
+                }, z.core.$strip>>;
+            }, z.core.$strip>;
+            recurrenceRules: z.ZodOptional<z.ZodArray<z.ZodObject<{
+                "@type": z.ZodLiteral<"RecurrenceRuleTemplate">;
+                frequency: z.ZodEnum<{
+                    secondly: "secondly";
+                    minutely: "minutely";
+                    hourly: "hourly";
+                    daily: "daily";
+                    weekly: "weekly";
+                    monthly: "monthly";
+                    yearly: "yearly";
+                }>;
+                interval: z.ZodOptional<z.ZodNumber>;
+                byDay: z.ZodOptional<z.ZodArray<z.ZodObject<{
+                    "@type": z.ZodLiteral<"NDay">;
+                    day: z.ZodEnum<{
+                        mo: "mo";
+                        tu: "tu";
+                        we: "we";
+                        th: "th";
+                        fr: "fr";
+                        sa: "sa";
+                        su: "su";
+                    }>;
+                    nthOfPeriod: z.ZodOptional<z.ZodNumber>;
+                }, z.core.$strip>>>;
+                byMonthDay: z.ZodOptional<z.ZodArray<z.ZodNumber>>;
+                byMonth: z.ZodOptional<z.ZodArray<z.ZodNumber>>;
+                bySetPosition: z.ZodOptional<z.ZodArray<z.ZodNumber>>;
+                times: z.ZodOptional<z.ZodNumber>;
+                until: z.ZodOptional<z.ZodISODateTime>;
+            }, z.core.$strip>>>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>;
+}, z.core.$strip>, z.ZodObject<{
     '@type': z.ZodLiteral<"ListPublishResponse">;
     publishes: z.ZodArray<z.ZodObject<{
         '@type': z.ZodLiteral<"Publish">;
@@ -610,4 +789,16 @@ export declare const PublisherResponseSchema: z.ZodUnion<readonly [z.ZodObject<{
     timestamp: z.ZodISODateTime;
 }, z.core.$strip>]>;
 export type PublisherResponse = z.infer<typeof PublisherResponseSchema>;
+export declare const PublisherRecipeIdParamsSchema: z.ZodObject<{
+    recipeId: z.ZodString;
+}, z.core.$strip>;
+export type PublisherRecipeIdParams = z.infer<typeof PublisherRecipeIdParamsSchema>;
+export declare const CreateUUIDsQuerySchema: z.ZodObject<{
+    count: z.ZodOptional<z.ZodString>;
+}, z.core.$strip>;
+export type CreateUUIDsQuery = z.infer<typeof CreateUUIDsQuerySchema>;
+export declare const GetPublishStatusQuerySchema: z.ZodObject<{
+    id: z.ZodOptional<z.ZodArray<z.ZodString>>;
+}, z.core.$strip>;
+export type GetPublishStatusQuery = z.infer<typeof GetPublishStatusQuerySchema>;
 //# sourceMappingURL=api.schema.d.ts.map

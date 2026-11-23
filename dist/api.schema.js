@@ -6,6 +6,7 @@ import { ErrorResponseSchema } from "@dsbunny/error-schema";
 import { PublishRequestSchema } from './request.schema.js';
 import { PublishResponseSchema } from './response.schema.js';
 import { PublishSchema } from "./publish.schema.js";
+import { RecipeTemplateSchema } from '@dsbunny/recipedb-schema/dist/recipe-template.schema.js';
 // #region Publisher
 export const CreateUUIDsRequestSchema = z.object({
     '@type': z.literal('CreateUUIDsRequest')
@@ -100,7 +101,7 @@ export const GetPublishStatusResponseSchema = z.union([
     id: 'GetPublishStatusResponseSchema',
     description: 'Get Publish Status response schema.',
 });
-export const CreatePublishRequestSchema = z.object({
+export const CreatePublishBodySchema = z.object({
     '@type': z.literal('CreatePublishRequest')
         .describe('Type of the create publish request object'),
     publish_request: PublishRequestSchema
@@ -109,12 +110,23 @@ export const CreatePublishRequestSchema = z.object({
     id: 'CreatePublishRequestSchema',
     description: 'Create Publish request schema.',
 });
+/** @deprecated Use CreatePublishBodySchema. */
+export const CreatePublishRequestSchema = CreatePublishBodySchema;
 export const CreatePublishResponseSchema = PublishResponseSchema.extend({
     '@type': z.literal('CreatePublishResponse')
         .describe('Type of the create publish response object'),
 }).register(dsbunnyRegistry, {
     id: 'CreatePublishResponseSchema',
     description: 'Create Publish response schema.',
+});
+export const GetRecipeResponseSchema = z.object({
+    '@type': z.literal('GetRecipeResponse')
+        .describe('Type of the get recipe response object'),
+    recipe: RecipeTemplateSchema.RecipeTemplateSchema
+        .describe('The recipe object.'),
+}).register(dsbunnyRegistry, {
+    id: 'GetRecipeResponseSchema',
+    description: 'Get Recipe response schema.',
 });
 export const ListPublishRequestSchema = z.object({
     '@type': z.literal('ListPublishRequest')
@@ -139,7 +151,7 @@ export const ListPublishResponseSchema = z.object({
 export const PublisherRequestSchema = z.union([
     CreateUUIDsRequestSchema,
     GetPublishStatusRequestSchema,
-    CreatePublishRequestSchema,
+    CreatePublishBodySchema,
     ListPublishRequestSchema,
 ]).register(dsbunnyRegistry, {
     id: 'PublisherRequestSchema',
@@ -149,6 +161,7 @@ export const PublisherResponseSchema = z.union([
     CreateUUIDsResponseSchema,
     GetPublishStatusResponseSchema,
     CreatePublishResponseSchema,
+    GetRecipeResponseSchema,
     ListPublishResponseSchema,
     ErrorResponseSchema,
 ]).register(dsbunnyRegistry, {
@@ -156,4 +169,16 @@ export const PublisherResponseSchema = z.union([
     description: 'Publisher API response schema.',
 });
 // #endregion
+export const PublisherRecipeIdParamsSchema = z.object({ recipeId: z.string() }).register(dsbunnyRegistry, {
+    id: 'PublisherRecipeIdParamsSchema',
+    description: 'Publisher recipe ID path parameter schema',
+});
+export const CreateUUIDsQuerySchema = z.object({ count: z.string().optional() }).register(dsbunnyRegistry, {
+    id: 'CreateUUIDsQuerySchema',
+    description: 'CreateUUIDsQuery schema',
+});
+export const GetPublishStatusQuerySchema = z.object({ id: z.array(z.string()).optional() }).register(dsbunnyRegistry, {
+    id: 'GetPublishStatusQuerySchema',
+    description: 'GetPublishStatusQuery schema',
+});
 //# sourceMappingURL=api.schema.js.map
