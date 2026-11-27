@@ -7,6 +7,13 @@ import { PublishRequestSchema } from './request.schema.js';
 import { PublishResponseSchema } from './response.schema.js';
 import { PublishSchema } from "./publish.schema.js";
 import { RecipeTemplateSchema } from '@dsbunny/recipedb-schema/dist/recipe-template.schema.js';
+export const PublisherPingResponseSchema = z.object({
+    ping: z.literal('pong'),
+    timestamp: z.iso.datetime(),
+}).register(dsbunnyRegistry, {
+    id: 'PublisherPingResponseSchema',
+    description: 'Publisher ping response schema',
+});
 // #region Publisher
 export const CreateUUIDsRequestSchema = z.object({
     '@type': z.literal('CreateUUIDsRequest')

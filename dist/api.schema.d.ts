@@ -1,4 +1,9 @@
 import * as z from 'zod';
+export declare const PublisherPingResponseSchema: z.ZodObject<{
+    ping: z.ZodLiteral<"pong">;
+    timestamp: z.ZodISODateTime;
+}, z.core.$strip>;
+export type PublisherPingResponse = z.infer<typeof PublisherPingResponseSchema>;
 export declare const CreateUUIDsRequestSchema: z.ZodOptional<z.ZodObject<{
     '@type': z.ZodLiteral<"CreateUUIDsRequest">;
 }, z.core.$strip>>;
